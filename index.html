@@ -1,141 +1,1482 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curating Thoughtful Celebrations | Flavor Fusion – Next Gen Catering</title>
-  <meta name="description" content="Premium catering and event execution in Mumbai. 40+ years legacy, 12+ years modern execution.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curating Thoughtful Celebrations | Flavor Fusion – Next Gen Catering</title>
+<meta name="description" content="Premium catering and event execution in Mumbai. 40+ years legacy, 12+ years modern execution.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="images/logo.svg">
+<style>
+  :root{
+    --cream-50:#FDFCF8;
+    --cream-100:#FAF7F0;
+    --cream-150:#F7F2E7;
+    --cream-200:#F5F0E6;
+    --cream-300:#EDE4D3;
+    --cream-400:#E0D4BC;
+    --cream-500:#D4C4A8;
+    --cream-600:#C4B08F;
+    --cream-700:#A89475;
+    --cream-800:#8B7A5C;
+    --cream-900:#6B5E47;
+    --gold-100:#F9F5E9;
+    --gold-300:#E6D4A8;
+    --gold-400:#D4B896;
+    --gold-500:#C4A574;
+    --gold-600:#B08D4F;
+    --gold-700:#8B6F3E;
+    --charcoal:#1F1D1A;
+    --charcoal-light:#4A4740;
+    --charcoal-muted:#6A665C;
+    --white:#FFFFFF;
+    --rule:#E4DCC8;
+
+    --font-serif:'Playfair Display', Georgia, serif;
+    --font-sans:'Inter', -apple-system, sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+
+    --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+
+    /* editorial vertical rhythm */
+    --pad-section: 88px;
+    --pad-x: max(24px, 5vw);
+  }
+  @media (max-width: 900px){
+    :root{ --pad-section: 56px; }
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  body{
+    font-family:var(--font-sans);
+    background:var(--cream-50);
+    color:var(--charcoal);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+
+  /* ---------- HEADER ---------- */
+  .header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(253,252,248,0.92);
+    backdrop-filter: blur(14px) saturate(1.1);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+    border-bottom:1px solid transparent;
+    transition:border-color .35s var(--ease), background .35s var(--ease);
+  }
+  .header.scrolled{
+    border-bottom-color:var(--rule);
+    background:rgba(253,252,248,0.96);
+  }
+  .header-inner{
+    max-width:1320px; margin:0 auto;
+    padding:14px var(--pad-x);
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+    gap:32px;
+  }
+  .logo{display:inline-flex; align-items:center; text-decoration:none; line-height:1;}
+  .logo-img{height:64px; width:auto; display:block;}
+  .logo-sub{
+    font-family:var(--font-mono);
+    font-size:9px; letter-spacing:0.25em;
+    text-transform:uppercase; color:var(--gold-600);
+    margin-top:6px; display:block; font-weight:400;
+  }
+  .nav{
+    display:flex; gap:28px; justify-content:center; align-items:center;
+  }
+  .nav a{
+    font-family:var(--font-sans);
+    font-size:13px; font-weight:500;
+    color:var(--charcoal-light);
+    text-decoration:none;
+    letter-spacing:0.01em;
+    position:relative;
+    transition:color .25s var(--ease);
+  }
+  .nav a::after{
+    content:""; position:absolute;
+    left:0; right:0; bottom:-6px;
+    height:1px; background:var(--gold-600);
+    transform:scaleX(0); transform-origin:left;
+    transition:transform .35s var(--ease);
+  }
+  .nav a:hover{ color:var(--charcoal); }
+  .nav a:hover::after{ transform:scaleX(1); }
+  .nav-cta{
+    font-family:var(--font-sans);
+    font-size:12px; font-weight:500;
+    letter-spacing:0.03em;
+    padding:10px 18px;
+    background:var(--charcoal); color:var(--cream-50);
+    text-decoration:none; border-radius:2px;
+    border:1px solid var(--charcoal);
+    transition:all .35s var(--ease);
+    white-space:nowrap;
+    justify-self:end;
+    width:max-content;
+  }
+  .nav-cta:hover{ background:transparent; color:var(--charcoal); }
+  .menu-toggle{ display:none; }
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-sans);
+    font-size:13px; font-weight:500;
+    letter-spacing:0.03em;
+    padding:14px 24px;
+    text-decoration:none;
+    border-radius:2px;
+    border:1px solid transparent;
+    transition:all .35s var(--ease);
+    cursor:pointer;
+    line-height:1;
+  }
+  .btn svg{ flex-shrink:0; }
+  .btn-primary{
+    background:var(--charcoal); color:var(--cream-50);
+    border-color:var(--charcoal);
+  }
+  .btn-primary:hover{ background:transparent; color:var(--charcoal); transform:translateY(-1px); }
+  .btn-outline{
+    background:transparent; color:var(--charcoal);
+    border-color:var(--charcoal-muted);
+  }
+  .btn-outline:hover{ border-color:var(--charcoal); color:var(--charcoal); }
+  .btn-outline-light{
+    background:transparent; color:var(--cream-50);
+    border-color:rgba(250,247,240,0.6);
+  }
+  .btn-outline-light:hover{ border-color:var(--cream-50); background:rgba(250,247,240,0.08); }
+  .btn-gold{
+    background:var(--gold-600); color:var(--cream-50);
+    border-color:var(--gold-600);
+  }
+  .btn-gold:hover{ background:var(--gold-700); border-color:var(--gold-700); }
+  .btn-wa{
+    background:#25D366; color:var(--white);
+    border-color:#25D366;
+  }
+  .btn-wa:hover{ background:#1EB855; border-color:#1EB855; }
+  .btn-ghost{
+    padding:12px 0;
+    background:transparent; color:var(--charcoal);
+    border:none; border-bottom:1px solid var(--charcoal);
+    border-radius:0;
+  }
+  .btn-ghost:hover{ color:var(--gold-700); border-bottom-color:var(--gold-700); }
+
+  /* ---------- EDITORIAL LABELS ---------- */
+  .sec-mark{
+    font-family:var(--font-mono);
+    font-size:11px; font-weight:400;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--gold-700);
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .sec-mark::before{
+    content:""; width:24px; height:1px; background:var(--gold-600);
+  }
+  .sec-mark.center{ justify-content:center; }
+
+  .sec-title{
+    font-family:var(--font-serif);
+    font-weight:500;
+    line-height:1.08;
+    letter-spacing:-0.025em;
+    color:var(--charcoal);
+    margin:14px 0 0;
+    font-size:clamp(2rem, 4vw, 3.2rem);
+  }
+  .sec-lede{
+    font-family:var(--font-sans);
+    font-size:clamp(1rem, 1.4vw, 1.15rem);
+    line-height:1.65;
+    color:var(--charcoal-light);
+    margin-top:20px;
+    max-width:58ch;
+  }
+  .sec-lede.center{ margin-left:auto; margin-right:auto; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:grid;
+    align-items:center;
+    overflow:hidden;
+    padding-top:96px;
+    padding-bottom:64px;
+  }
+  .hero-grid{
+    max-width:1320px;
+    margin:0 auto;
+    padding:0 var(--pad-x);
+    display:grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap:64px;
+    align-items:center;
+    width:100%;
+  }
+  .hero-copy{ position:relative; z-index:2; }
+  .hero-title{
+    font-family:var(--font-serif);
+    font-weight:500;
+    font-size:clamp(3rem, 6.2vw, 5.2rem);
+    line-height:1.02;
+    letter-spacing:-0.03em;
+    color:var(--charcoal);
+    margin:22px 0 0;
+  }
+  .hero-title em{
+    font-style:italic; font-weight:500;
+    color:var(--gold-700);
+  }
+  .hero-sub{
+    font-family:var(--font-sans);
+    font-size:clamp(1rem, 1.4vw, 1.2rem);
+    color:var(--charcoal-light);
+    margin-top:28px;
+    max-width:44ch;
+    line-height:1.7;
+  }
+  .hero-trust{
+    font-family:var(--font-sans);
+    font-size:14px;
+    color:var(--charcoal-muted);
+    margin-top:14px;
+    max-width:44ch;
+    line-height:1.6;
+  }
+  .hero-cta{
+    display:flex; gap:14px; flex-wrap:wrap;
+    margin-top:36px;
+  }
+  .hero-urg{
+    font-family:var(--font-mono);
+    font-size:10px; letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--charcoal-muted);
+    margin-top:28px;
+  }
+
+  .hero-visual{
+    position:relative;
+    aspect-ratio: 4/5;
+    width:100%;
+  }
+  .hero-visual img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    border-radius:2px;
+  }
+  .hero-visual::before{
+    content:""; position:absolute;
+    inset: -24px auto auto -24px;
+    width:60%; height:60%;
+    border:1px solid var(--gold-400);
+    z-index:-1;
+    border-radius:2px;
+  }
+  .hero-visual::after{
+    content:""; position:absolute;
+    inset: auto -24px -24px auto;
+    width:40%; height:40%;
+    background:var(--cream-200);
+    z-index:-1;
+    border-radius:2px;
+  }
+
+  .hero-bg-accent{
+    position:absolute; inset:0;
+    background: radial-gradient(circle at 85% 15%, rgba(212,184,150,0.18), transparent 50%);
+    pointer-events:none;
+  }
+  .hero-bg-image{
+    position:absolute; inset:0;
+    z-index:-2;
+    overflow:hidden;
+    pointer-events:none;
+  }
+  .hero-bg-image img{
+    width:100%; height:100%;
+    object-fit:cover;
+    opacity:0.28;
+    filter:blur(1.5px) saturate(0.85);
+    transform:scale(1.05);
+  }
+  .hero-bg-image::after{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at center, rgba(253,252,248,0.72) 0%, rgba(253,252,248,0.88) 50%, rgba(253,252,248,0.98) 100%),
+      linear-gradient(to bottom, rgba(253,252,248,0.4), rgba(253,252,248,0.6));
+  }
+
+  @media (max-width: 900px){
+    .hero{ min-height:auto; padding-top:140px; }
+    .hero-grid{ grid-template-columns:1fr; gap:48px; }
+    .hero-visual{ aspect-ratio: 4/3; }
+  }
+
+  /* ---------- TRUST BAR ---------- */
+  .trust{
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    background:var(--cream-100);
+  }
+  .trust-inner{
+    max-width:1320px; margin:0 auto;
+    padding: 36px var(--pad-x);
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:24px;
+    text-align:center;
+  }
+  .trust-item{ position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .trust-item + .trust-item::before{
+    content:""; position:absolute;
+    left:0; top:50%; transform:translateY(-50%);
+    width:1px; height:56px;
+    background:var(--rule);
+  }
+  .trust-num{
+    font-family:var(--font-sans);
+    font-size:clamp(2.2rem, 4vw, 3rem);
+    color:var(--gold-700);
+    font-weight:500;
+    line-height:1;
+    letter-spacing:-0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .trust-lbl{
+    font-family:var(--font-mono);
+    font-size:10px; letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--charcoal-muted);
+    margin-top:10px;
+  }
+  @media (max-width: 700px){
+    .trust-inner{ grid-template-columns:1fr 1fr; gap:32px 16px; }
+    .trust-item + .trust-item::before{ display:none; }
+  }
+
+  /* ---------- SECTION WRAPPER ---------- */
+  .section{
+    padding: var(--pad-section) var(--pad-x);
+    max-width:1320px;
+    margin:0 auto;
+  }
+  .section.full{ max-width:none; padding-left:0; padding-right:0; }
+  .section.full > .section-inner{
+    max-width:1320px; margin:0 auto;
+    padding:0 var(--pad-x);
+  }
+  .section.alt{ background:var(--white); }
+
+  .section-head{ max-width:720px; margin:0 auto 56px; text-align:center; }
+
+  /* ---------- BRAND STORY ---------- */
+  .story{
+    display:grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap:88px;
+    align-items:center;
+  }
+  .story-img{ position:relative; }
+  .story-img img{
+    width:100%; aspect-ratio: 4/5; object-fit:cover;
+    border-radius:2px;
+  }
+  .story-img::before{
+    content:""; position:absolute;
+    inset:auto -20px -20px auto;
+    width:55%; height:55%;
+    border:1px solid var(--gold-400);
+    z-index:-1;
+    border-radius:2px;
+  }
+  .story-body p{
+    font-size:1.05rem; line-height:1.8;
+    color:var(--charcoal-light);
+    margin-top:20px;
+  }
+  .story-body p.lead{
+    font-family:var(--font-serif);
+    font-size:1.4rem; line-height:1.55;
+    color:var(--charcoal);
+    font-weight:400;
+  }
+  .story-cta{ margin-top:36px; }
+  @media (max-width: 900px){
+    .story{ grid-template-columns:1fr; gap:48px; }
+  }
+
+  /* ---------- SERVICES ---------- */
+  .svc-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .svc-card{
+    background:transparent;
+    transition:transform .5s var(--ease);
+  }
+  .svc-card:hover{ transform:translateY(-4px); }
+  .svc-img{
+    position:relative;
+    overflow:hidden;
+    border-radius:2px;
+    aspect-ratio: 3/4;
+  }
+  .svc-img img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .8s var(--ease);
+  }
+  .svc-card:hover .svc-img img{ transform:scale(1.04); }
+  .svc-num{
+    font-family:var(--font-mono);
+    font-size:10px; letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold-700);
+    margin-top:22px;
+  }
+  .svc-title{
+    font-family:var(--font-serif);
+    font-size:1.55rem; font-weight:500;
+    color:var(--charcoal);
+    margin-top:8px;
+    letter-spacing:-0.01em;
+  }
+  .svc-desc{
+    font-size:0.98rem;
+    color:var(--charcoal-light);
+    margin-top:12px;
+    line-height:1.7;
+  }
+  .svc-link{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono);
+    font-size:11px; letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--charcoal);
+    text-decoration:none;
+    margin-top:18px;
+    padding-bottom:6px;
+    border-bottom:1px solid var(--rule);
+    transition:all .3s var(--ease);
+  }
+  .svc-link:hover{ color:var(--gold-700); border-bottom-color:var(--gold-700); }
+  .svc-link svg{ transition:transform .3s var(--ease); }
+  .svc-link:hover svg{ transform:translateX(3px); }
+  @media (max-width: 900px){
+    .svc-grid{ grid-template-columns:1fr; gap:40px; }
+  }
+
+  /* ---------- PACKAGES (LIGHT GOLD) ---------- */
+  .pkg-section{
+    background:var(--gold-300);
+    color:var(--charcoal);
+    padding: var(--pad-section) var(--pad-x);
+  }
+  .pkg-inner{ max-width:1320px; margin:0 auto; }
+  .pkg-head{ max-width:720px; margin:0 auto 56px; text-align:center; }
+  .pkg-head .sec-title{ color:var(--charcoal); }
+  .pkg-head .sec-lede{ color:var(--charcoal-light); }
+  .pkg-mark{
+    color:var(--gold-700);
+  }
+  .pkg-mark::before{ background:var(--gold-700); }
+
+  .pkg-grid{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:32px;
+  }
+  .pkg-card{
+    padding:40px 36px;
+    border:1px solid rgba(31,29,26,0.18);
+    background:var(--cream-50);
+    position:relative;
+    transition:all .35s var(--ease);
+    display:grid;
+    grid-template-rows: auto auto auto auto 1fr auto;
+    row-gap:0;
+  }
+  .pkg-card:hover{ border-color:var(--charcoal); transform:translateY(-3px); box-shadow:0 30px 60px -30px rgba(31,29,26,0.18); }
+  .pkg-card.featured{
+    background:var(--charcoal);
+    border-color:var(--charcoal);
+  }
+  .pkg-label{
+    font-family:var(--font-mono);
+    font-size:11px; letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--gold-700);
+  }
+  .pkg-card.featured .pkg-label{ color:var(--gold-300); }
+  .pkg-title{
+    font-family:var(--font-serif);
+    font-size:1.85rem; font-weight:500;
+    color:var(--charcoal);
+    margin-top:12px;
+    line-height:1.15;
+    min-height:2.4em;
+  }
+  .pkg-card.featured .pkg-title{ color:var(--cream-50); }
+  .pkg-price{
+    font-family:var(--font-sans);
+    font-size:2.2rem; font-weight:500;
+    color:var(--charcoal);
+    margin-top:20px;
+    letter-spacing:-0.03em;
+    min-height:1.2em;
+    display:flex;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .pkg-card.featured .pkg-price{ color:var(--gold-300); }
+  .pkg-price span{
+    font-family:var(--font-sans);
+    font-size:0.85rem;
+    color:var(--charcoal-muted);
+    font-weight:400;
+    letter-spacing:0.02em;
+    margin-left:4px;
+  }
+  .pkg-card.featured .pkg-price span{ color:var(--cream-400); }
+  .pkg-desc{
+    color:var(--charcoal-light);
+    margin-top:16px;
+    font-size:0.98rem;
+    line-height:1.7;
+    min-height:5.1em;
+  }
+  .pkg-card.featured .pkg-desc{ color:var(--cream-300); }
+  .pkg-features{
+    list-style:none;
+    margin:20px 0 28px;
+    padding-top:20px;
+    border-top:1px solid rgba(31,29,26,0.15);
+    align-self:start;
+  }
+  .pkg-card.featured .pkg-features{ border-top-color:rgba(250,247,240,0.08); }
+  .pkg-features li{
+    padding:8px 0;
+    color:var(--charcoal-light);
+    font-size:0.95rem;
+    position:relative;
+    padding-left:22px;
+    line-height:1.55;
+  }
+  .pkg-features li::before{
+    content:"—";
+    position:absolute; left:0; top:8px;
+    color:var(--gold-700);
+  }
+  .pkg-card.featured .pkg-features li{ color:var(--cream-200); }
+  .pkg-card.featured .pkg-features li::before{ color:var(--gold-500); }
+  @media (max-width: 900px){
+    .pkg-grid{ grid-template-columns:1fr; gap:24px; }
+    .pkg-card{ padding:36px 28px; }
+  }
+
+  /* ---------- HOUSE PARTY ---------- */
+  .hp-strip{
+    margin: 48px 0 60px;
+    position:relative;
+    aspect-ratio: 21/9;
+    overflow:hidden;
+    border-radius:2px;
+  }
+  .hp-strip img{
+    width:100%; height:100%; object-fit:cover;
+  }
+  .hp-caption{
+    position:absolute;
+    left:24px; bottom:24px;
+    background:rgba(31,29,26,0.85);
+    color:var(--cream-100);
+    font-family:var(--font-mono);
+    font-size:11px; letter-spacing:0.15em; text-transform:uppercase;
+    padding:10px 16px;
+    backdrop-filter:blur(8px);
+  }
+
+  .hp-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  .hp-card{
+    background:var(--white);
+    border:1px solid var(--rule);
+    padding:32px 26px;
+    transition:all .35s var(--ease);
+    display:flex; flex-direction:column;
+  }
+  .hp-card:hover{
+    border-color:var(--gold-500);
+    transform:translateY(-3px);
+    box-shadow: 0 30px 60px -30px rgba(31,29,26,0.12);
+  }
+  .hp-card.featured{
+    background:var(--charcoal);
+    color:var(--cream-100);
+    border-color:var(--charcoal);
+    position:relative;
+  }
+  .hp-card.featured::before{
+    content:"MOST POPULAR";
+    position:absolute;
+    top:-1px; left:50%; transform:translate(-50%, -50%);
+    background:var(--gold-600); color:var(--cream-50);
+    font-family:var(--font-mono);
+    font-size:10px; letter-spacing:0.25em;
+    padding:6px 14px;
+    white-space:nowrap;
+  }
+  .hp-tier{
+    font-family:var(--font-mono);
+    font-size:11px; letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--gold-700);
+  }
+  .hp-card.featured .hp-tier{ color:var(--gold-400); }
+  .hp-price{
+    font-family:var(--font-sans);
+    font-size:2.4rem; font-weight:500;
+    color:var(--charcoal);
+    margin-top:14px;
+    letter-spacing:-0.03em;
+    line-height:1;
+    font-variant-numeric: tabular-nums;
+    display:flex; align-items:baseline; gap:4px;
+  }
+  .hp-card.featured .hp-price{ color:var(--cream-50); }
+  .hp-price span{
+    font-family:var(--font-sans);
+    font-size:0.85rem;
+    color:var(--charcoal-muted);
+    font-weight:400;
+    letter-spacing:0.02em;
+    margin-left:4px;
+  }
+  .hp-card.featured .hp-price span{ color:var(--cream-400); }
+  .hp-list{
+    list-style:none;
+    margin:20px 0;
+    padding-top:20px;
+    border-top:1px solid var(--rule);
+    flex:1;
+  }
+  .hp-card.featured .hp-list{ border-top-color:rgba(250,247,240,0.1); }
+  .hp-list li{
+    padding:8px 0;
+    font-size:0.95rem;
+    color:var(--charcoal-light);
+    position:relative;
+    padding-left:22px;
+    line-height:1.55;
+  }
+  .hp-card.featured .hp-list li{ color:var(--cream-200); }
+  .hp-list li::before{
+    content:"—"; position:absolute;
+    left:0; top:8px;
+    color:var(--gold-500);
+  }
+  .hp-btn{
+    width:100%; justify-content:center;
+    margin-top:auto;
+  }
+
+  .hp-includes{
+    display:flex; justify-content:center; gap:40px;
+    margin-top:40px;
+    flex-wrap:wrap;
+    font-family:var(--font-mono);
+    font-size:11px; letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--charcoal-muted);
+  }
+  .hp-includes span{ display:inline-flex; align-items:center; gap:10px; }
+  .hp-includes span::before{
+    content:""; width:6px; height:6px;
+    background:var(--gold-500);
+    border-radius:50%;
+  }
+  .hp-note{
+    text-align:center;
+    margin-top:24px;
+    font-size:13px;
+    color:var(--charcoal-muted);
+    font-style:italic;
+  }
+  .hp-cta{
+    text-align:center; margin-top:48px;
+  }
+  @media (max-width: 900px){
+    .hp-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- BANANA LEAF MENU ---------- */
+  .banana-menu{
+    background:var(--cream-100);
+    color:var(--charcoal);
+    padding: var(--pad-section) var(--pad-x);
+    position:relative;
+  }
+  .banana-head{
+    max-width:880px; margin:0 auto 64px;
+    text-align:center; position:relative;
+  }
+  .banana-head .sec-lede{ margin:20px auto 0; }
+
+  .banana-stage{
+    max-width:1320px; margin:0 auto;
+    display:grid; grid-template-columns: 5fr 7fr;
+    gap:80px; align-items:start;
+    position:relative;
+  }
+  .banana-image-wrap{
+    position:sticky; top:96px;
+  }
+  .banana-image{
+    position:relative;
+    border-radius:2px; overflow:hidden;
+    aspect-ratio: 5/4;
+  }
+  .banana-image img{
+    width:100%; height:100%; object-fit:cover;
+    display:block;
+  }
+  .banana-image-wrap::before{
+    content:""; position:absolute;
+    inset:auto -20px -20px auto;
+    width:55%; height:55%;
+    border:1px solid var(--gold-400);
+    z-index:0; border-radius:2px;
+  }
+  .banana-image-tag{
+    position:absolute; left:20px; bottom:20px;
+    background:rgba(31,29,26,0.88);
+    color:var(--cream-50);
+    font-family:var(--font-mono, "JetBrains Mono", monospace);
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    padding:9px 14px;
+    z-index:2;
+  }
+
+  .banana-content{ position:relative; }
+  .banana-tabs{
+    display:flex; flex-wrap:wrap;
+    gap:4px 24px;
+    margin-bottom:40px;
+    padding-bottom:0;
+    border-bottom:1px solid var(--rule);
+  }
+  .banana-tab{
+    background:transparent;
+    color:var(--charcoal-muted);
+    border:none;
+    padding:14px 0;
+    margin-bottom:-1px;
+    font-family:var(--font-mono, "JetBrains Mono", monospace);
+    font-size:10px; font-weight:500;
+    letter-spacing:1.6px; text-transform:uppercase;
+    cursor:pointer;
+    position:relative;
+    transition:color .25s var(--ease);
+  }
+  .banana-tab::after{
+    content:""; position:absolute;
+    left:0; right:0; bottom:-1px;
+    height:1px; background:var(--charcoal);
+    transform:scaleX(0); transform-origin:left;
+    transition:transform .3s var(--ease);
+  }
+  .banana-tab:hover{ color:var(--charcoal); }
+  .banana-tab.active{
+    color:var(--charcoal);
+  }
+  .banana-tab.active::after{ transform:scaleX(1); }
+
+  .banana-panel{ display:none; }
+  .banana-panel.active{ display:block; animation: bananaIn .4s var(--ease); }
+  @keyframes bananaIn{
+    from{ opacity:0; transform:translateY(8px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .banana-panel-head{
+    margin-bottom:32px;
+  }
+  .banana-menu-tag{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--font-mono, "JetBrains Mono", monospace);
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--gold-700);
+    margin-bottom:14px;
+  }
+  .banana-menu-tag::before{
+    content:""; width:24px; height:1px;
+    background:var(--gold-600);
+  }
+  .banana-menu-name{
+    font-family:var(--font-serif);
+    font-size:clamp(28px, 3vw, 38px);
+    font-weight:500;
+    color:var(--charcoal);
+    margin:0; line-height:1.1;
+    letter-spacing:-0.02em;
+  }
+
+  .banana-items{
+    list-style:none; padding:0; margin:0;
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:0 40px;
+  }
+  .banana-items li{
+    font-family:var(--font-sans);
+    font-size:15px; line-height:1.65;
+    color:var(--charcoal-light);
+    padding:10px 0 10px 22px;
+    position:relative;
+    border-bottom:1px solid rgba(31,29,26,0.06);
+  }
+  .banana-items li::before{
+    content:"—"; position:absolute;
+    left:0; top:10px;
+    color:var(--gold-600);
+    font-weight:400;
+  }
+
+  .banana-notes{
+    max-width:1320px; margin:80px auto 0;
+    padding-top:48px;
+    border-top:1px solid var(--rule);
+  }
+  .banana-notes-title{
+    font-family:var(--font-mono, "JetBrains Mono", monospace);
+    font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--gold-700); font-weight:600;
+    margin:0 0 28px;
+    display:inline-flex; align-items:center; gap:12px;
+  }
+  .banana-notes-title::before{
+    content:""; width:28px; height:1px; background:var(--gold-600);
+  }
+  .banana-notes-grid{
+    list-style:none; padding:0; margin:0;
+    display:grid; grid-template-columns:repeat(3, 1fr);
+    gap:14px 56px;
+  }
+  .banana-notes-grid li{
+    font-family:var(--font-sans);
+    font-size:13px; line-height:1.6;
+    color:var(--charcoal-light);
+    padding-left:18px; position:relative;
+  }
+  .banana-notes-grid li::before{
+    content:""; position:absolute;
+    left:0; top:9px;
+    width:5px; height:5px;
+    background:var(--gold-500);
+  }
+  @media (max-width: 980px){
+    .banana-stage{ grid-template-columns:1fr; gap:48px; }
+    .banana-image-wrap{ position:relative; top:0; }
+    .banana-image{ aspect-ratio:16/10; max-height:420px; }
+    .banana-items{ grid-template-columns:1fr; }
+    .banana-notes-grid{ grid-template-columns:1fr 1fr; gap:14px 32px; }
+  }
+  @media (max-width: 600px){
+    .banana-notes-grid{ grid-template-columns:1fr; }
+    .banana-tabs{ gap:4px 16px; }
+  }
+
+  /* ---------- GALLERY MOSAIC ---------- */
+  .gallery-mosaic{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    grid-auto-rows:140px;
+    grid-auto-flow:dense;
+    gap:8px;
+  }
+  .gm-item{
+    position:relative; overflow:hidden;
+    border-radius:2px; cursor:pointer;
+  }
+  .gm-item img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .8s var(--ease);
+  }
+  .gm-item:hover img{ transform:scale(1.06); }
+  .gm-item .g-caption{
+    position:absolute; left:14px; bottom:14px;
+    background:rgba(31,29,26,0.85);
+    color:var(--cream-100);
+    font-family:var(--font-sans);
+    font-size:10px; letter-spacing:1.4px; text-transform:uppercase;
+    padding:6px 10px;
+    opacity:0; transform:translateY(6px);
+    transition:all .35s var(--ease);
+  }
+  .gm-item:hover .g-caption{ opacity:1; transform:translateY(0); }
+  .gm-2x2{ grid-column:span 2; grid-row:span 2; }
+  .gm-3x2{ grid-column:span 3; grid-row:span 2; }
+  .gm-2x1{ grid-column:span 2; grid-row:span 1; }
+  .gm-1x2{ grid-column:span 1; grid-row:span 2; }
+  @media (max-width: 900px){
+    .gallery-mosaic{ grid-template-columns:repeat(4, 1fr); grid-auto-rows:120px; }
+    .gm-3x2{ grid-column:span 4; }
+  }
+  @media (max-width: 600px){
+    .gallery-mosaic{ grid-template-columns:repeat(2, 1fr); grid-auto-rows:130px; }
+    .gm-2x2, .gm-3x2{ grid-column:span 2; }
+    .gm-1x2{ grid-column:span 1; grid-row:span 1; }
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:220px;
+    gap:12px;
+  }
+  .g-item{
+    position:relative; overflow:hidden;
+    border-radius:2px;
+    cursor:pointer;
+  }
+  .g-item img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .8s var(--ease);
+  }
+  .g-item:hover img{ transform:scale(1.05); }
+  .g-caption{
+    position:absolute;
+    left:16px; bottom:16px; right:16px;
+    font-family:var(--font-mono);
+    font-size:10px; letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--cream-50);
+    background:rgba(31,29,26,0.78);
+    padding:8px 12px;
+    backdrop-filter:blur(6px);
+    opacity:0; transform:translateY(8px);
+    transition:all .35s var(--ease);
+  }
+  .g-item:hover .g-caption{ opacity:1; transform:translateY(0); }
+  .g-tall{ grid-row:span 2; }
+  .g-wide{ grid-column:span 2; }
+  .gallery-cta{ text-align:center; margin-top:56px; }
+  @media (max-width: 900px){
+    .gallery{ grid-template-columns:repeat(2, 1fr); grid-auto-rows:180px; }
+    .g-wide{ grid-column:span 2; }
+    .g-tall{ grid-row:span 1; }
+  }
+
+  /* ---------- WHY US ---------- */
+  .why{ background:var(--cream-100); }
+  .why-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr);
+    gap:40px; margin-top:56px;
+  }
+  .why-item{
+    text-align:center;
+    padding:0 16px;
+    position:relative;
+  }
+  .why-item + .why-item::before{
+    content:""; position:absolute;
+    left:-24px; top:20px; bottom:20px;
+    width:1px; background:var(--rule);
+  }
+  .why-num{
+    font-family:var(--font-sans);
+    font-size:clamp(3rem, 5vw, 4rem);
+    color:var(--gold-700);
+    font-weight:500;
+    line-height:1;
+    letter-spacing:-0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .why-lbl{
+    font-family:var(--font-serif);
+    font-size:1.3rem;
+    color:var(--charcoal);
+    margin-top:18px;
+    font-weight:500;
+  }
+  .why-desc{
+    font-size:0.95rem;
+    color:var(--charcoal-light);
+    margin-top:10px;
+    line-height:1.65;
+  }
+  @media (max-width: 900px){
+    .why-grid{ grid-template-columns:1fr; gap:40px; }
+    .why-item + .why-item::before{ display:none; }
+  }
+
+  /* ---------- VENUES ---------- */
+  .venues-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+  }
+  .venue-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:2px;
+    aspect-ratio: 3/4;
+    cursor:pointer;
+  }
+  .venue-card img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .8s var(--ease);
+  }
+  .venue-card:hover img{ transform:scale(1.05); }
+  .venue-card::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(31,29,26,0.85) 0%, rgba(31,29,26,0.1) 45%, transparent 70%);
+  }
+  .venue-meta{
+    position:absolute;
+    left:20px; right:20px; bottom:22px;
+    z-index:2;
+    color:var(--cream-50);
+    text-align:center;
+  }
+  .venue-tag{
+    font-family:var(--font-mono);
+    font-size:10px; letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold-300);
+  }
+  .venue-name{
+    font-family:var(--font-serif);
+    font-size:1.25rem;
+    font-weight:500;
+    margin-top:8px;
+    letter-spacing:-0.01em;
+    line-height:1.2;
+  }
+  .venue-sub{
+    font-size:0.85rem;
+    color:var(--cream-300);
+    margin-top:4px;
+  }
+  @media (max-width: 900px){
+    .venues-grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{ background:var(--cream-100); }
+  .tm-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+    margin-top:40px;
+  }
+  .tm-card{
+    background:var(--cream-50);
+    border:1px solid var(--rule);
+    padding:32px 28px;
+    display:flex; flex-direction:column;
+    position:relative;
+    transition:all .35s var(--ease);
+  }
+  .tm-card:hover{
+    border-color:var(--gold-500);
+    transform:translateY(-3px);
+    box-shadow: 0 30px 60px -30px rgba(31,29,26,0.12);
+  }
+  .tm-quote-mark{
+    font-family:var(--font-serif);
+    font-size:3.4rem;
+    line-height:0.8;
+    color:var(--gold-500);
+    margin-bottom:8px;
+  }
+  .tm-body{
+    font-size:1rem;
+    line-height:1.75;
+    color:var(--charcoal-light);
+    flex:1;
+  }
+  .tm-rating{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.15em;
+    color:var(--gold-700);
+    margin-top:24px;
+  }
+  .tm-meta{
+    display:flex; align-items:center; gap:14px;
+    margin-top:20px;
+    padding-top:20px;
+    border-top:1px solid var(--rule);
+  }
+  .tm-avatar{
+    width:44px; height:44px;
+    border-radius:50%;
+    background:var(--gold-100);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-serif);
+    font-size:1.1rem;
+    font-weight:500;
+    color:var(--gold-700);
+  }
+  .tm-person{ line-height:1.3; }
+  .tm-name{
+    font-family:var(--font-serif);
+    font-size:1.02rem;
+    color:var(--charcoal);
+    font-weight:500;
+  }
+  .tm-event{
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--charcoal-muted);
+    margin-top:4px;
+  }
+  @media (max-width: 900px){
+    .tm-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    background:var(--charcoal);
+    color:var(--cream-300);
+    padding: 72px var(--pad-x) 32px;
+  }
+  .footer-inner{
+    max-width:1320px; margin:0 auto;
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns: 2.2fr 1fr 1fr 1.2fr;
+    gap:48px;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(250,247,240,0.08);
+  }
+  .f-brand .logo-word{ color:var(--cream-50); }
+  .f-tag{
+    color:var(--cream-400);
+    margin-top:16px;
+    max-width:320px;
+    font-size:0.95rem;
+    line-height:1.7;
+  }
+  .f-social{ display:flex; gap:12px; margin-top:24px; }
+  .f-social a{
+    width:40px; height:40px;
+    border:1px solid rgba(250,247,240,0.2);
+    border-radius:50%;
+    display:inline-flex; align-items:center; justify-content:center;
+    color:var(--cream-300);
+    text-decoration:none;
+    transition:all .3s var(--ease);
+  }
+  .f-social a:hover{
+    border-color:var(--gold-500);
+    color:var(--gold-400);
+  }
+  .f-col h4{
+    font-family:var(--font-mono);
+    font-size:10px; letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--cream-50);
+    margin-bottom:20px;
+    font-weight:500;
+  }
+  .f-col ul{ list-style:none; }
+  .f-col li{ margin-bottom:12px; }
+  .f-col a{
+    color:var(--cream-400);
+    text-decoration:none;
+    font-size:0.95rem;
+    transition:color .25s var(--ease);
+  }
+  .f-col a:hover{ color:var(--gold-400); }
+  .f-col li{ color:var(--cream-400); font-size:0.95rem; }
+
+  .footer-bottom{
+    display:flex; justify-content:space-between;
+    padding-top:32px;
+    font-family:var(--font-mono);
+    font-size:10px; letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--cream-500);
+    flex-wrap:wrap; gap:12px;
+  }
+
+  @media (max-width: 900px){
+    .footer-top{ grid-template-columns:1fr 1fr; gap:48px; }
+    .f-brand{ grid-column:1/-1; }
+  }
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .wa-float{
+    position:fixed;
+    bottom:24px; right:24px;
+    width:56px; height:56px;
+    background:#25D366;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--white);
+    text-decoration:none;
+    box-shadow:0 8px 24px rgba(37,211,102,0.35);
+    z-index:90;
+    transition:all .35s var(--ease);
+  }
+  .wa-float:hover{ transform:scale(1.08); }
+
+  /* responsive nav */
+  @media (max-width: 1100px){
+    .nav{ display:none; }
+    .menu-toggle{
+      display:flex; flex-direction:column; gap:5px; cursor:pointer; padding:8px;
+    }
+    .menu-toggle span{
+      width:24px; height:1.5px; background:var(--charcoal); display:block;
+    }
+    .header-inner{ grid-template-columns:auto 1fr auto; }
+  }
+
+</style>
+<link rel="stylesheet" href="refinements.css">
+<script src="navigation.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
-  <header class="header">
-    <div class="header-container">
-    <a href="/" class="logo">
-       <img src="/logo.svg" alt="Flavor Fusion Logo" class="logo-img">
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="#" class="logo" aria-label="Flavor Fusion">
+      <img src="images/logo.png" alt="Flavor Fusion" class="logo-img" style="width: 150px; height: 85px; object-fit: cover">
     </a>
-      </a>
-      <nav class="nav">
-        <a href="/about/" class="nav-link">About</a>
-        <a href="/approach/" class="nav-link">Our Approach</a>
-        <a href="/services/" class="nav-link">What We Do</a>
-        <a href="/menu/" class="nav-link">Menu</a>
-        <a href="/venues/" class="nav-link">Venues</a>
-        <a href="/gallery/" class="nav-link">Gallery</a>
-        <a href="/testimonials/" class="nav-link">Testimonials</a>
-        <a href="/contact/" class="nav-cta">Plan Your Celebration</a>
-      </nav>
-      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    <nav class="nav" id="main-navigation" aria-label="Main navigation">
+      <a href="#about" style="text-transform: uppercase; text-align: center">About</a>
+      <a href="#approach" style="text-transform: uppercase">Our Approach</a>
+      <a href="#services" style="text-transform: uppercase">What We Do</a>
+      <a href="#menu" style="text-transform: uppercase">Menu</a>
+      <a href="#venues" style="text-transform: uppercase">Venues</a>
+      <a href="#gallery" style="text-transform: uppercase">Gallery</a>
+      <a href="#testimonials" style="text-transform: uppercase">Testimonials</a>
+    </nav>
+    <a href="#contact" class="nav-cta" style="text-transform: uppercase">Plan Your Celebration</a>
+    <button type="button" class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main-content">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg-image">
+    <img src="images/photo-1546833999-b9f581a1996d.jpg" alt="" aria-hidden="true">
+  </div>
+  <div class="hero-bg-accent"></div>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="sec-mark" style="font-weight: 700">The Home</span>
+      <h1 class="hero-title">Curating Thoughtful
+Celebrations.</h1>
+      <p class="hero-sub" style="font-weight: 500">A refined approach to Venue, Cuisine, Design &amp; Execution.</p>
+      <p class="hero-trust" style="font-weight: 500">Trusted by Families and Corporate Clients across Mumbai for seamless catering experiences.</p>
+      <div class="hero-cta">
+        <a href="https://wa.me/919819576256" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Get Quote on WhatsApp
+        </a>
+        <a href="#menu" class="btn btn-outline">View Menu &amp; Packages</a>
+      </div>
+      <p class="hero-urg" style="font-weight: 700">Limited bookings per date — to ensure quality execution.</p>
     </div>
-  </header>
-
-<div class="coverage-banner">
-  <strong>We cater at any venue across Mumbai, Thane, and Navi Mumbai</strong> — including your home, society, or private location.
-</div>
-
-<section class="hero">
-  <div class="hero-content">
-    <p class="hero-label">Est. 1984 · Mumbai</p>
-    <h1 class="hero-title">Curating Thoughtful Celebrations</h1>
-    <p class="hero-subtitle">A refined approach to Venue, Cuisine, Design &amp; Execution</p>
-    <div class="hero-cta">
-      <a href="https://wa.me/919819576256?text=Hi%2C%20I%20want%20to%20plan%20an%20event%20with%20Flavor%20Fusion" class="btn btn-primary" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>&nbsp; Get Quote on WhatsApp
-      </a>
-      <a href="services/index.html" class="btn btn-secondary">Explore Experiences</a>
+    <div class="hero-visual">
+      <img src="images/photo-1565958011703-44f9829ba187.jpg" alt="Elegant vegetarian event setup">
     </div>
   </div>
 </section>
 
-<div class="trust-bar">
-  <div class="trust-bar-item"><strong>40+</strong><span>Years Legacy</span></div>
-  <div class="trust-bar-item"><strong>12+</strong><span>Years Modern Execution</span></div>
-  <div class="trust-bar-item"><strong>100+</strong><span>Events Annually</span></div>
-  <div class="trust-bar-item"><strong>3</strong><span>Cities Served</span></div>
-</div>
-
-<section class="brand-position">
-  <div class="brand-container">
-    <div class="brand-content">
-      <p class="section-label">Our Evolution</p>
-      <h2>From Catering to Complete Celebration Execution</h2>
-      <p class="lead">We have transformed from traditional catering into a comprehensive celebration experience company. Our approach integrates venue coordination, culinary artistry, decor integration, and event execution into one seamless journey.</p>
-      <p>Led by Rohit Nate, we bring 40+ years of legacy from Suresh Caterers combined with 12+ years of modern execution expertise. This unique blend allows us to honor tradition while delivering contemporary, structured celebrations.</p>
-      <p style="margin-top:1rem;"><strong>We cater across Mumbai, Thane &amp; Navi Mumbai</strong> — at banquet halls, hotels, homes, societies, or any private venue you choose.</p>
+<!-- BRAND STORY -->
+<section class="section alt" id="about">
+  <div class="story">
+    <div class="story-img">
+      <img src="images/photo-1567337710282-00832b415979.jpg" alt="Premium vegetarian catering setup by Flavor Fusion">
     </div>
-    <div class="brand-visual">
-      <div style="aspect-ratio:4/3;background:linear-gradient(135deg,var(--cream-200) 0%,var(--cream-300) 100%);display:flex;align-items:center;justify-content:center;color:var(--cream-600);font-family:var(--font-serif);font-size:1.25rem;text-align:center;padding:2rem;">
-        <div>
-          <div style="font-size:3rem;color:var(--gold-500);margin-bottom:1rem;">40+</div>
-          <div>Years of Legacy</div>
-          <div style="font-size:0.875rem;margin-top:0.5rem;opacity:0.7;">Suresh Caterers Heritage</div>
+    <div class="story-body">
+      <span class="sec-mark" style="font-weight: 700">No. 02 · Our Evolution</span>
+      <h2 class="sec-title">From Catering to Complete
+Celebration Execution.</h2>
+      <p class="lead">We have transformed from traditional catering into a comprehensive celebration experience company, integrating venue coordination, culinary artistry, decor, and event execution into one seamless journey.</p>
+      <p>Led by Rohit Nate, we bring 40+ years of Suresh Caterers legacy combined with 12+ years of modern execution expertise. We cater across Mumbai, Thane &amp; Navi Mumbai — at banquet halls, hotels, homes, or any private venue.</p>
+      <div class="story-cta">
+        <a href="#about" class="btn btn-ghost">
+          Our Story
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="approach">
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div style="padding: var(--pad-section) 0;">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="sec-mark center" style="font-weight: 700">Our Approach</span>
+        <h2 class="sec-title">Built on Trust
+&amp; Experience.</h2>
+        <p class="sec-lede center" style="font-weight: 500">Trusted by families and corporate clients across Mumbai for seamless event execution.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-num">40+</div>
+          <div class="why-lbl">Years of Legacy</div>
+          <p class="why-desc">Suresh Caterers heritage since 1980.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-num">12+</div>
+          <div class="why-lbl">Modern Execution</div>
+          <p class="why-desc">The contemporary approach led by Rohit Nate.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-num">100+</div>
+          <div class="why-lbl">Events Annually</div>
+          <p class="why-desc">Across Mumbai, Thane &amp; Navi Mumbai.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section pillars">
-  <div class="section-header">
-    <p class="section-label">The Four Pillars</p>
-    <h2 class="section-title">Integrated Experience Model</h2>
-    <p class="section-subtitle">Every celebration is built on four essential dimensions, orchestrated by one unified team</p>
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-head">
+    <span class="sec-mark center" style="font-weight: 700">No. 03 · What We Do</span>
+    <h2 class="sec-title">Every Occasion,
+Executed Perfectly.</h2>
+    <p class="sec-lede center" style="font-weight: 500">From intimate home gatherings to grand wedding receptions — a full-service approach to every celebration.</p>
   </div>
-  <div class="pillars-grid">
-    <div class="pillar-card"><div class="pillar-number">01</div><h3 class="pillar-title">Venue Experience</h3><p class="pillar-desc">Strategic space planning, guest flow optimization, and venue coordination that ensures seamless movement and atmosphere.</p></div>
-    <div class="pillar-card"><div class="pillar-number">02</div><h3 class="pillar-title">Culinary Experience</h3><p class="pillar-desc">Complete dining journeys crafted as experiences, not item counts. Regional and global cuisine integration with presentation artistry.</p></div>
-    <div class="pillar-card"><div class="pillar-number">03</div><h3 class="pillar-title">Design &amp; Decor</h3><p class="pillar-desc">Visual storytelling through elegant decor integration. From concept to execution, creating cohesive aesthetic environments.</p></div>
-    <div class="pillar-card"><div class="pillar-number">04</div><h3 class="pillar-title">Event Coordination</h3><p class="pillar-desc">Disciplined timeline management, vendor coordination, and on-ground execution control for composed, stress-free celebrations.</p></div>
+
+  <div class="svc-grid">
+    <article class="svc-card">
+      <div class="svc-img">
+        <img src="images/event-2.png" alt="Premium wedding catering dessert tower" loading="lazy">
+      </div>
+      <div class="svc-num" style="text-align: center; font-weight: 700">01 · Weddings</div>
+      <h3 class="svc-title" style="text-align: center">Weddings</h3>
+      <p class="svc-desc" style="text-align: center">Grand receptions to intimate ceremonies — full catering &amp; coordination across all pre-wedding and wedding day functions.</p>
+      <a href="#services" class="svc-link" style="width: 317px; text-align: center; align-items: center; font-weight: 500">         EXPLORE WEDDINGS</a>
+    </article>
+
+    <article class="svc-card">
+      <div class="svc-img">
+        <img src="images/event-4.png" alt="Live chef cooking at corporate event" loading="lazy">
+      </div>
+      <div class="svc-num" style="text-align: center; font-weight: 700">02 · Corporate</div>
+      <h3 class="svc-title" style="text-align: center">Corporate Events</h3>
+      <p class="svc-desc" style="text-align: center">Professional, on-time service for annual meets, product launches, client dinners, and team gatherings.</p>
+      <a href="#services" class="svc-link" style="width: 317px; justify-content: center; text-align: center; font-weight: 500">
+        Explore Corporate
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="svc-card">
+      <div class="svc-img">
+        <img src="images/event-3.png" alt="Chit Chaat counter at home celebration" loading="lazy">
+      </div>
+      <div class="svc-num" style="text-align: center">03 · At-home</div>
+      <h3 class="svc-title" style="text-align: center">House Party Catering</h3>
+      <p class="svc-desc" style="text-align: center">Elegant buffet setups at your home or society. 20–200 guests, quick setup, hassle-free service from ₹800/guest.</p>
+      <a href="#house-party" class="svc-link" style="width: 317px; justify-content: center; text-align: center; font-weight: 500">
+        View Packages
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
   </div>
 </section>
 
-<section class="dual-offer">
-  <div class="dual-container">
-    <div class="offer-card">
-      <p class="offer-label">Accessible Excellence</p>
-      <h3 class="offer-title">Affordable Catering Packages</h3>
-      <div class="offer-price">₹600 <span>per guest onwards</span></div>
-      <p class="offer-desc">Quality catering solutions for intimate gatherings, corporate lunches, and social functions without compromising on taste or presentation.</p>
-      <ul class="offer-features">
-        <li>Standard to Diamond tier options</li>
-        <li>Regional cuisine specialties</li>
-        <li>Professional service staff</li>
-        <li>Basic setup &amp; coordination</li>
-      </ul>
-      <a href="menu/index.html" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.3);color:white;">View Packages</a>
+<!-- PACKAGES (DARK) -->
+<section class="pkg-section" id="menu">
+  <div class="pkg-inner">
+    <div class="pkg-head">
+      <span class="sec-mark pkg-mark center">No. 04 · Two ways to book</span>
+      <h2 class="sec-title">Accessible Excellence.
+Curated Experiences.</h2>
     </div>
-    <div class="offer-card featured">
-      <p class="offer-label">Curated Experiences</p>
-      <h3 class="offer-title">Premium Curated Experiences</h3>
-      <div class="offer-price">₹1,500 – ₹2,200 <span>per guest</span></div>
-      <p class="offer-desc">Comprehensive celebration experiences for weddings, milestone events, and luxury corporate gatherings. Full-service execution included.</p>
-      <ul class="offer-features">
-        <li>Royal Heritage &amp; Imperial Fusion themes</li>
-        <li>Venue coordination &amp; decor integration</li>
-        <li>Dedicated event management team</li>
-        <li>End-to-end execution &amp; supervision</li>
-        <li>Custom menu curation</li>
-      </ul>
-      <a href="menu/index.html#premium" class="btn btn-primary">Explore Experiences</a>
+
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-label" style="text-align: center; font-weight: 700">Accessible Excellence</div>
+        <h3 class="pkg-title" style="font-size: 40px; text-align: center">Affordable Catering Packages</h3>
+        <div class="pkg-price">₹600 – ₹1,300 <span>per guest onwards</span></div>
+        <p class="pkg-desc">Quality catering for intimate gatherings, corporate lunches, and social functions without compromising on taste or presentation.</p>
+        <ul class="pkg-features">
+          <li>Standard to Diamond Tier Options</li>
+          <li>Regional Cuisine Specialties</li>
+          <li>Professional Service Staff</li>
+          <li>Standard Setup &amp; Co-ordination</li>
+        </ul>
+        <a href="#menu" class="btn btn-outline" style="height: 42px; text-align: center; justify-content: center">View Menu &amp; Packages</a>
+      </div>
+
+      <div class="pkg-card featured">
+        <div class="pkg-label" style="text-align: center; font-weight: 700">Curated Experiences</div>
+        <h3 class="pkg-title" style="font-size: 40px; text-align: center">Premium Curated Experiences</h3>
+        <div class="pkg-price">₹1,500 – ₹2,200 <span>per guest onwards</span></div>
+        <p class="pkg-desc">Comprehensive experiences for weddings, milestone events, and luxury corporate gatherings. Full-service execution included.</p>
+        <ul class="pkg-features">
+          <li>Royal Heritage &amp; Imperial Fusion Themes</li>
+          <li>Venue Co-ordination &amp; Decor Integration</li>
+          <li>Dedicated Event Management Team</li>
+          <li>End-to-end Execution &amp; Supervision</li>
+          <li>Custom Menu Curation</li>
+        </ul>
+        <a href="https://wa.me/919819576256" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="height: 42px; text-align: center; justify-content: center">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          View on WhatsApp
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- House Party Section -->
-<section class="section house-party-section" id="house-party">
-  <div class="section-header">
-    <p class="section-label">Home Celebrations</p>
-    <h2 class="section-title">Elegant Catering for Home Celebrations</h2>
-    <p class="section-subtitle">Ideal for 20–200 guests · Quick setup · Hassle-free service</p>
+<!-- HOUSE PARTY -->
+<section class="section alt" id="house-party">
+  <div class="section-head">
+    <span class="sec-mark center" style="font-weight: 700">No. 05 · Home Celebrations</span>
+    <h2 class="sec-title">Elegant Catering for
+Home Celebrations.</h2>
+    <p class="sec-lede center" style="font-weight: 500">Ideal for 20–200 guests. Quick setup. Hassle-free service.</p>
   </div>
-  <div class="house-party-grid">
+
+  <div class="hp-strip">
+    <img src="images/photo-1505253758473-96b7015fcd40.jpg" alt="Vegetarian home celebration buffet" loading="lazy">
+    <div class="hp-caption" style="text-align: center">Recent home celebration · Mumbai</div>
+  </div>
+
+  <div class="hp-grid">
     <div class="hp-card">
-      <div class="hp-card-tier">Silver</div>
-      <div class="hp-card-price">₹800<span>/guest</span></div>
-      <ul class="hp-card-list">
+      <div class="hp-tier" style="font-size: 13px; text-align: center; font-weight: 700">Silver</div>
+      <div class="hp-price">₹800<span>/guest</span></div>
+      <ul class="hp-list">
         <li>2–3 Starters (veg &amp; non-veg)</li>
         <li>Salad setup</li>
         <li>2–3 Main course gravies</li>
@@ -143,12 +1484,13 @@
         <li>Bread (roti/naan)</li>
         <li>Dessert</li>
       </ul>
-      <a href="https://wa.me/919819576256?text=Hi%2C%20I%20want%20to%20plan%20an%20event%20with%20Flavor%20Fusion" target="_blank" class="wa-btn" style="width:100%;justify-content:center;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Book on WhatsApp</a>
+      <a href="https://wa.me/919819576256" target="_blank" rel="noopener noreferrer" class="btn btn-outline hp-btn">Book on WhatsApp</a>
     </div>
+
     <div class="hp-card featured">
-      <div class="hp-card-tier">Gold — Most Popular</div>
-      <div class="hp-card-price">₹900<span>/guest</span></div>
-      <ul class="hp-card-list">
+      <div class="hp-tier" style="font-size: 13px; text-align: center; font-weight: 700">Gold</div>
+      <div class="hp-price">₹900<span>/guest</span></div>
+      <ul class="hp-list" style="border-color: rgb(228, 220, 200)">
         <li>3 Starters + 1 live counter</li>
         <li>Elaborate salad setup</li>
         <li>3 Main course gravies</li>
@@ -156,12 +1498,13 @@
         <li>Bread varieties</li>
         <li>2 Desserts</li>
       </ul>
-      <a href="https://wa.me/919819576256?text=Hi%2C%20I%20want%20to%20plan%20an%20event%20with%20Flavor%20Fusion" target="_blank" class="wa-btn" style="width:100%;justify-content:center;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Book on WhatsApp</a>
+      <a href="https://wa.me/919819576256" target="_blank" rel="noopener noreferrer" class="btn btn-gold hp-btn">Book on WhatsApp</a>
     </div>
+
     <div class="hp-card">
-      <div class="hp-card-tier">Diamond</div>
-      <div class="hp-card-price">₹1,300<span>/guest</span></div>
-      <ul class="hp-card-list">
+      <div class="hp-tier" style="font-size: 13px; text-align: center; font-weight: 700">Diamond</div>
+      <div class="hp-price">₹1,300<span>/guest</span></div>
+      <ul class="hp-list">
         <li>4–5 Starters + 2 live counters</li>
         <li>Premium salad &amp; chaat bar</li>
         <li>4 Main course gravies</li>
@@ -169,91 +1512,603 @@
         <li>Multiple bread varieties</li>
         <li>3 Desserts</li>
       </ul>
-      <a href="https://wa.me/919819576256?text=Hi%2C%20I%20want%20to%20plan%20an%20event%20with%20Flavor%20Fusion" target="_blank" class="wa-btn" style="width:100%;justify-content:center;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Book on WhatsApp</a>
+      <a href="https://wa.me/919819576256" target="_blank" rel="noopener noreferrer" class="btn btn-outline hp-btn">Book on WhatsApp</a>
     </div>
   </div>
+
   <div class="hp-includes">
-    <span>🍽 Buffet setup</span>
-    <span>👨‍🍳 Service staff</span>
-    <span>🥄 Basic crockery</span>
+    <span style="font-weight: 700">Buffet Setup</span>
+    <span style="font-weight: 700">Service Staff</span>
+    <span style="font-weight: 700">Basic Crockery</span>
   </div>
-  <p class="hp-note">For smaller groups (below 50 guests), minimum order value applies. Prices exclusive of taxes.</p>
-  <div style="text-align:center;margin-top:2rem;">
-    <a href="https://wa.me/919819576256?text=Hi%2C%20I%20want%20to%20plan%20an%20event%20with%20Flavor%20Fusion" target="_blank" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>&nbsp; Book Home Catering on WhatsApp</a>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-header">
-    <p class="section-label">Why Choose Us</p>
-    <h2 class="section-title">Built on Trust &amp; Experience</h2>
-  </div>
-  <div class="trust-grid">
-    <div class="trust-item"><div class="trust-number">40+</div><div class="trust-label">Years of Legacy</div><div class="trust-desc">Suresh Caterers heritage since 1984</div></div>
-    <div class="trust-item"><div class="trust-number">12+</div><div class="trust-label">Years Modern Execution</div><div class="trust-desc">Contemporary approach led by Rohit Nate</div></div>
-    <div class="trust-item"><div class="trust-number">100+</div><div class="trust-label">Events Annually</div><div class="trust-desc">Across Mumbai, Thane &amp; Navi Mumbai</div></div>
+  <p class="hp-note">For groups below 50 guests, minimum order value applies. Prices exclusive of trasportation &amp; taxes.</p>
+  <div class="hp-cta">
+    <a href="https://wa.me/919819576256" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Book Home Catering on WhatsApp
+    </a>
   </div>
 </section>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <div class="logo-main" style="margin-bottom:1rem;">Flavor Fusion</div>
-        <p>Curating thoughtful celebrations through structured execution and refined experiences.</p>
-        <div class="wa-dual" style="justify-content:flex-start;margin-top:1rem;">
-          <a href="https://wa.me/919819576256?text=Hi%2C%20I%20want%20to%20plan%20an%20event%20with%20Flavor%20Fusion" target="_blank" class="wa-btn" style="font-size:0.8rem;padding:0.6rem 1rem;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> +91 98195 76256</a>
-          <a href="https://wa.me/918104334307?text=Hi%2C%20I%20want%20to%20plan%20an%20event%20with%20Flavor%20Fusion" target="_blank" class="wa-btn" style="font-size:0.8rem;padding:0.6rem 1rem;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> +91 81043 34307</a>
+<!-- BANANA LEAF MENU -->
+<section class="banana-menu" id="banana-menu">
+  <div class="banana-head">
+    <span class="sec-mark center">No. 06 · Sadhya Service</span>
+    <h2 class="sec-title">Authentic Menus,<br>Served on a Banana Leaf.</h2>
+    <p class="sec-lede center" style="font-weight: 500">Seven regional traditions, laid out leaf by leaf — fresh, hot, and served the way they were meant to be.</p>
+  </div>
+
+  <div class="banana-stage">
+    <div class="banana-image-wrap">
+      <div class="banana-image">
+        <img src="images/banana-leaf-1.jpg" alt="Traditional vegetarian sadhya served on a banana leaf">
+        <div class="banana-image-tag">Served on Fresh Banana Leaf</div>
+      </div>
+    </div>
+
+    <div class="banana-content">
+      <div class="banana-tabs" role="tablist">
+        <button class="banana-tab active" data-menu="udupi-basic" style="font-size: 20px; font-weight: 700" type="button">UDUPI BASIC</button>
+        <button class="banana-tab" data-menu="udupi-special" style="font-size: 20px; font-weight: 700" type="button">UDUPI SPECIAL</button>
+        <button class="banana-tab" data-menu="onam" style="font-size: 20px; font-weight: 700">Onam Sadhya</button>
+        <button class="banana-tab" data-menu="tamil" style="font-size: 20px; font-weight: 700">TAMIL SPECIAL</button>
+        <button class="banana-tab" data-menu="hubli" style="font-size: 20px; font-weight: 700">Hubli / Dharwad</button>
+        <button class="banana-tab" data-menu="gsb" style="font-size: 20px; font-weight: 700">GSB</button>
+        <button class="banana-tab" data-menu="maharashtrian" style="font-size: 20px; font-weight: 700">Maharashtrian</button>
+      </div>
+
+      <div class="banana-panel active" data-menu="udupi-basic">
+        <div class="banana-panel-head">
+          <span class="banana-menu-tag" style="font-weight: 500">Menu 01 · Udupi Tradition</span>
+          <h3 class="banana-menu-name">Udupi — Basic Menu</h3>
+        </div>
+        <ul class="banana-items">
+          <li>1 Mocktail, 1 Fruit Juice</li>
+          <li>Payasa (Kadle Bele / Hesaru Bele)</li>
+          <li>1 Dry Veg, 1 Ghasi</li>
+          <li>1 Dry Veg, 1 Ghasi</li>
+          <li>1 Flavored Rice</li>
+          <li>1 Plain Rice</li>
+          <li>Tove (Dal), Ghee</li>
+          <li>Saaru (Rasam)</li>
+          <li>Huli (Sambar)</li>
+          <li>Papad</li>
+          <li>Menasinkai (Sweet &amp; Sour)</li>
+          <li>Holige (Purangoli) or Boondi Laddoo</li>
+          <li>Butter Milk</li>
+          <li>Water Bottles</li>
+        </ul>
+      </div>
+
+      <div class="banana-panel" data-menu="udupi-special">
+        <div class="banana-panel-head">
+          <span class="banana-menu-tag" style="font-weight: 600">Menu 02 · Udupi Tradition</span>
+          <h3 class="banana-menu-name">Udupi — Special Menu</h3>
+        </div>
+        <ul class="banana-items">
+          <li>1 Mocktail, 1 Fruit Juice</li>
+          <li>Payasa (Kadle Bele / Hesaru Bele)</li>
+          <li>Salt, Pickle, Chutney, Kosambari</li>
+          <li>1 Dry Veg, 1 Ghasi</li>
+          <li>1 Flavored Rice</li>
+          <li>1 Plain Rice</li>
+          <li>Tove (Dal), Ghee</li>
+          <li>Tambuli or Udina Hittu</li>
+          <li>Saaru (Rasam)</li>
+          <li>Huli (Sambar)</li>
+          <li>Menasinkai (Sweet &amp; Sour)</li>
+          <li>Papad, 2 Khara Items</li>
+          <li>Curd &amp; Sweet</li>
+          <li>Butter Milk</li>
+          <li>Pan Supari or Beeda</li>
+          <li>Puri or Chapati (Optional)</li>
+        </ul>
+      </div>
+
+      <div class="banana-panel" data-menu="onam">
+        <div class="banana-panel-head">
+          <span class="banana-menu-tag" style="font-weight: 600">Menu 03 · Kerala Tradition</span>
+          <h3 class="banana-menu-name">Onam Sadhya</h3>
+        </div>
+        <ul class="banana-items">
+          <li>1 Mocktail, 1 Fruit Juice</li>
+          <li>Salt, Pickle</li>
+          <li>Pull Inji</li>
+          <li>Thair Pachadi, Sweet Pachadi</li>
+          <li>Kalan, Olan</li>
+          <li>Thoran</li>
+          <li>Avial</li>
+          <li>Eriasery or Kootu Curry</li>
+          <li>Banana Cut Chips, Jaggery Chips</li>
+          <li>Plain Rice</li>
+          <li>Sambhar</li>
+          <li>Paruppu, Ghee</li>
+          <li>Rasam</li>
+          <li>Papadam</li>
+          <li>Pal Ada Payasam or Ada Pradhaman</li>
+          <li>Butter Milk</li>
+          <li>Yellow Banana</li>
+          <li>Water Bottles</li>
+        </ul>
+      </div>
+
+      <div class="banana-panel" data-menu="tamil">
+        <div class="banana-panel-head">
+          <span class="banana-menu-tag" style="font-weight: 600">Menu 04 · Tamil Tradition</span>
+          <h3 class="banana-menu-name">Tamil — Special Menu</h3>
+        </div>
+        <ul class="banana-items">
+          <li>1 Mocktail, 1 Fruit Juice</li>
+          <li>Pickle, Chutney</li>
+          <li>Sweet Pachadi, Thair Pachadi</li>
+          <li>Aviyal</li>
+          <li>Vatha Kuzhambu</li>
+          <li>Mor Kuzhambu</li>
+          <li>Rasam</li>
+          <li>Kadamba Sambhar</li>
+          <li>Plain Rice, Paruppu, Ghee</li>
+          <li>Appalam</li>
+          <li>Pal Payasam</li>
+          <li>1 Sweet Item</li>
+          <li>1 Fried Item</li>
+          <li>1 Flavored Rice</li>
+          <li>Curd &amp; Butter Milk</li>
+          <li>Mor Milagai (Curd Chilly)</li>
+          <li>Beeda, Water Bottles</li>
+        </ul>
+      </div>
+
+      <div class="banana-panel" data-menu="hubli">
+        <div class="banana-panel-head">
+          <span class="banana-menu-tag" style="font-weight: 600">Menu 05 · North Karnataka</span>
+          <h3 class="banana-menu-name">Hubli / Dharwad Menu</h3>
+        </div>
+        <ul class="banana-items">
+          <li>1 Mocktail, 1 Fruit Juice</li>
+          <li>Salt, Pickle, Chutney, Kosambari</li>
+          <li>Kayirsea</li>
+          <li>Raita</li>
+          <li>Mudde Palya</li>
+          <li>Palya</li>
+          <li>Rice, Tove, Ghee</li>
+          <li>Huli (Sambhar)</li>
+          <li>Saaru (Rasam)</li>
+          <li>1 Flavored Rice</li>
+          <li>Holige (Purangoli God), Milk, Ghee</li>
+          <li>Mix Bhajiya (Burburi)</li>
+          <li>Papya</li>
+          <li>Butter Milk</li>
+          <li>Ambika Appalam</li>
+          <li>Pan Supari, Water Bottles</li>
+          <li>Puri or Chapati (Optional)</li>
+        </ul>
+      </div>
+
+      <div class="banana-panel" data-menu="gsb">
+        <div class="banana-panel-head">
+          <span class="banana-menu-tag" style="font-weight: 600">Menu 06 · Konkani Tradition</span>
+          <h3 class="banana-menu-name">GSB Menu</h3>
+        </div>
+        <ul class="banana-items">
+          <li>1 Mocktail, 1 Fruit Juice</li>
+          <li>Salt, Pickle</li>
+          <li>1 Upkari</li>
+          <li>1 Ghasi</li>
+          <li>1 Fruit Sasam</li>
+          <li>Puri</li>
+          <li>Rice</li>
+          <li>Dali Toy, Ghee</li>
+          <li>Saaru (Rasam)</li>
+          <li>Khotto (Pandi)</li>
+          <li>Mix Bhajiya / Fodi</li>
+          <li>Butter Milk</li>
+          <li>Beeda or Mukhwas</li>
+          <li>Water Bottles</li>
+          <li>Optional: 1 Basic Sweet, Boondi Laddoo, Mixture Packet, Kaju Kadi</li>
+        </ul>
+      </div>
+
+      <div class="banana-panel" data-menu="maharashtrian">
+        <div class="banana-panel-head">
+          <span class="banana-menu-tag" style="font-weight: 600">Menu 07 · Maharashtra</span>
+          <h3 class="banana-menu-name">Maharashtrian Menu</h3>
+        </div>
+        <ul class="banana-items">
+          <li>1 Mocktail, 1 Fruit Juice</li>
+          <li>Salt, Pickle, 2 Chutney (Sweet, Spicy)</li>
+          <li>Koshimbir, Papad, Kurdya</li>
+          <li>Any 1 (Mix Bhajya, Vada)</li>
+          <li>Any 2 (Puri, Phulka, Bhakri, Vada)</li>
+          <li>1 Usal (Gravy Bhaji)</li>
+          <li>1 Dry Veg, 1 Kurma / Mix Bhaji</li>
+          <li>Sadha Bhaat</li>
+          <li>Varan, Top or Amti</li>
+          <li>Masale Bhaat / Pulav</li>
+          <li>Tomato Saar / Kadhi</li>
+          <li>2 Sweet (Basic, Milk)</li>
+          <li>Chass or Mathha or Solkadhi</li>
+          <li>Water Bottles</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="banana-notes">
+    <h4 class="banana-notes-title">Service Notes</h4>
+    <ul class="banana-notes-grid">
+      <li>Welcome drinks served for 1 hour only<br><br></li>
+      <li>Starters at additional rates</li>
+      <li>Buffet-setup service charged extra</li>
+      <li>Service guaranteed for up to 10% additional guests (with charges)</li>
+      <li>GST charged extra at 5% on food</li>
+      <li>Khara items provided at added rate</li>
+      <li>Thamboolam bags &amp; Seer Bakshanam available</li>
+      <li>Nadaswaram set available at added cost</li>
+      <li>All payments 100% in advance, 30 days before event</li>
+      <li>All rates are on per-person basis</li>
+      <li>Silver / Golden plate panqat charged extra</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+  (function(){
+    const tabs = document.querySelectorAll(".banana-tab");
+    const panels = document.querySelectorAll(".banana-panel");
+    tabs.forEach(t => t.addEventListener("click", () => {
+      const target = t.dataset.menu;
+      tabs.forEach(x => x.classList.toggle("active", x === t));
+      panels.forEach(p => p.classList.toggle("active", p.dataset.menu === target));
+    }));
+  })();
+</script>
+
+<!-- VENUES -->
+<section class="section" id="venues">
+  <div class="section-head">
+    <span class="sec-mark center" style="font-weight: 700">Venues We Serve</span>
+    <h2 class="sec-title">Across Banquet Halls, Lawns, Private Venues &amp; Corporate Offices.</h2>
+    <p class="sec-lede center" style="font-weight: 500">We bring our full catering &amp; execution capability to any location across Mumbai, Thane &amp; Navi Mumbai.</p>
+  </div>
+
+  <div class="venues-grid">
+    <div class="venue-card">
+      <img src="images/photo-1519167758481-83f550bb49b3.jpg" alt="Banquet halls" loading="lazy">
+      <div class="venue-meta">
+        <div class="venue-tag" style="font-weight: 700; color: #FDFCF8">VENUE TYPE</div>
+        <div class="venue-name">Banquet Halls</div>
+        <div class="venue-sub">Grand Wedding halls &amp; Reception Venues</div>
+      </div>
+    </div>
+    <div class="venue-card">
+      <img src="images/photo-1497366754035-f200968a6e72.jpg" alt="Corporate offices" loading="lazy">
+      <div class="venue-meta">
+        <div class="venue-tag" style="font-weight: 800; color: #FDFCF8">VENUE TYPE</div>
+        <div class="venue-name">Corporate Offices</div>
+        <div class="venue-sub">Boardrooms &amp; Office Event Spaces</div>
+      </div>
+    </div>
+    <div class="venue-card">
+      <img src="images/photo-1502672260266-1c1ef2d93688.jpg" alt="Home celebrations" loading="lazy">
+      <div class="venue-meta">
+        <div class="venue-tag" style="font-weight: 800; color: #FDFCF8">VENUE TYPE</div>
+        <div class="venue-name">Home Celebrations</div>
+        <div class="venue-sub">Apartments, Bungalows &amp; Terraces</div>
+      </div>
+    </div>
+    <div class="venue-card">
+      <img src="images/photo-1464366400600-7168b8af9bc3.jpg" alt="Outdoor venues" loading="lazy">
+      <div class="venue-meta">
+        <div class="venue-tag" style="font-weight: 800; color: #FDFCF8">VENUE TYPE</div>
+        <div class="venue-name">Outdoor &amp; Garden</div>
+        <div class="venue-sub">Lawns, Gardens, Resorts &amp; Wedding Destinations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="section-head">
+    <span class="sec-mark center" style="font-weight: 700">No. 06 · Our Work</span>
+    <h2 class="sec-title">Moments From Our Events.</h2>
+    <p class="sec-lede center" style="font-weight: 500">A glimpse of the experiences we craft.</p>
+  </div>
+
+  <div class="gallery-mosaic">
+    <div class="gm-item gm-2x2">
+      <img src="images/event-1.png" alt="Vegetarian wedding buffet spread" loading="lazy">
+      <div class="g-caption">Wedding Buffet</div>
+    </div>
+    <div class="gm-item gm-2x1">
+      <img src="images/photo-1631452180519-c014fe946bc7.jpg" alt="South Indian thali" loading="lazy">
+      <div class="g-caption">Thali Service</div>
+    </div>
+    <div class="gm-item gm-2x2">
+      <img src="images/photo-1546833999-b9f581a1996d.jpg" alt="Event decoration" loading="lazy">
+      <div class="g-caption">Event Décor</div>
+    </div>
+    <div class="gm-item gm-2x1">
+      <img src="images/photo-1567337710282-00832b415979.jpg" alt="Live food counter" loading="lazy">
+      <div class="g-caption">Live Counter</div>
+    </div>
+
+    <div class="gm-item gm-2x1">
+      <img src="images/photo-1631452180519-c014fe946bc7.jpg" alt="Plated vegetarian dish" loading="lazy">
+      <div class="g-caption">Plated Service</div>
+    </div>
+    <div class="gm-item gm-2x2">
+      <img src="images/photo-1623428187969-5da2dcea5ebf.jpg" alt="Vegetarian Indian food spread" loading="lazy">
+      <div class="g-caption">Culinary Spread</div>
+    </div>
+    <div class="gm-item gm-2x1">
+      <img src="images/photo-1488477181946-6428a0291777.jpg" alt="Dessert station" loading="lazy">
+      <div class="g-caption">Dessert Station</div>
+    </div>
+    <div class="gm-item gm-2x2">
+      <img src="images/photo-1505253758473-96b7015fcd40.jpg" alt="Indian curry preparation" loading="lazy">
+      <div class="g-caption">Live Cooking</div>
+    </div>
+    <div class="gm-item gm-2x1">
+      <img src="images/photo-1606491956689-2ea866880c84.jpg" alt="Paneer preparation" loading="lazy">
+      <div class="g-caption">Chef's Special</div>
+    </div>
+
+    <div class="gm-item gm-3x2">
+      <img src="images/photo-1601050690597-df0568f70950.jpg" alt="South Indian banana leaf meal" loading="lazy">
+      <div class="g-caption">Banana Leaf Sadhya</div>
+    </div>
+    <div class="gm-item gm-3x2">
+      <img src="images/photo-1574484284002-952d92456975.jpg" alt="Decorated dining setup" loading="lazy">
+      <div class="g-caption">Table Setup</div>
+    </div>
+
+    <div class="gm-item gm-2x1">
+      <img src="images/banana-leaf-3.jpg" alt="Live chaat counter" loading="lazy">
+      <div class="g-caption">Chaat Counter</div>
+    </div>
+    <div class="gm-item gm-2x1">
+      <img src="images/banana-leaf-2.webp" alt="Mixed thali presentation" loading="lazy">
+      <div class="g-caption">Curated Plate</div>
+    </div>
+    <div class="gm-item gm-2x1">
+      <img src="images/event-5.png" alt="Master chef at live counter" loading="lazy">
+      <div class="g-caption">Master Chef</div>
+    </div>
+    <div class="gm-item gm-2x1">
+      <img src="images/event-6.png" alt="Vegetarian spring roll appetizers" loading="lazy">
+      <div class="g-caption">Welcome Appetizers</div>
+    </div>
+    <div class="gm-item gm-2x1">
+      <img src="images/photo-1544025162-d76694265947.jpg" alt="Catered event setup" loading="lazy">
+      <div class="g-caption">Corporate Event</div>
+    </div>
+  </div>
+  <div class="gallery-cta">
+    <a href="#gallery" class="btn btn-outline">
+      View Full Gallery
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div style="padding: var(--pad-section) 0;">
+      <div class="section-head">
+        <span class="sec-mark center" style="font-weight: 700">What Clients Say</span>
+        <h2 class="sec-title">Trusted by Families
+&amp; Corporates Clientele.</h2>
+        <p class="sec-lede center" style="font-weight: 500">Real feedback from celebrations we've had the privilege of serving.</p>
+      </div>
+
+      <div class="tm-grid">
+        <article class="tm-card">
+          <div class="tm-quote-mark">&ldquo;</div>
+          <p class="tm-body">The Gold package was flawless. 120 guests, live chaat counter, biryani station — every dish served on time and absolutely delicious. Our guests haven't stopped talking about it.</p>
+          <div class="tm-rating">★★★★★</div>
+          <div class="tm-meta">
+            <div class="tm-avatar">PM</div>
+            <div class="tm-person">
+              <div class="tm-name">Priya Mehta</div>
+              <div class="tm-event">Housewarming · Bandra</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tm-card">
+          <div class="tm-quote-mark">&ldquo;</div>
+          <p class="tm-body">From menu curation to decor integration, Rohit and team handled every detail. Our 300-guest wedding reception ran without a single hiccup. Truly structured execution.</p>
+          <div class="tm-rating">★★★★★</div>
+          <div class="tm-meta">
+            <div class="tm-avatar">AS</div>
+            <div class="tm-person">
+              <div class="tm-name">Arjun &amp; Sneha</div>
+              <div class="tm-event">Wedding Reception · Thane</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tm-card">
+          <div class="tm-quote-mark">&ldquo;</div>
+          <p class="tm-body">We've booked Flavor Fusion for three corporate events now. Punctual, professional, and the food quality is consistent every single time. Our go-to catering partner.</p>
+          <div class="tm-rating">★★★★★</div>
+          <div class="tm-meta">
+            <div class="tm-avatar">RK</div>
+            <div class="tm-person">
+              <div class="tm-name">Rahul Kapoor</div>
+              <div class="tm-event">Corporate Event · BKC</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="f-brand">
+        <a href="#" class="logo" aria-label="Flavor Fusion" style="flex-direction:column; align-items:flex-start;">
+          <img src="images/logo.png" alt="Flavor Fusion" class="logo-img" style="height:72px; background:var(--cream-50); padding:8px 12px; border-radius:6px;">
+          <span class="logo-sub" style="margin-top:10px;">A Suresh Caterers Enterprise</span>
+        </a>
+        <p class="f-tag">Curating thoughtful celebrations through structured execution and refined experiences.</p>
+        <div class="f-social">
+          <a href="https://www.instagram.com/flavorfusioncatering" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://wa.me/919819576256" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
         </div>
       </div>
-      <div class="footer-nav">
-        <h4 class="footer-title">Explore</h4>
-      <ul class="footer-links">
-         <li><a href="/about/">About Us</a></li>
-         <li><a href="/approach/">Our Approach</a></li>
-         <li><a href="/services/">Services</a></li>
-         <li><a href="/menu/">Menu</a></li>
-         <li><a href="/venues/">Venues</a></li>
-      </ul>
-      </div>
-      <div class="footer-nav">
-        <h4 class="footer-title">Events</h4>
-        <ul class="footer-links">
-          <li><a href="services/index.html#weddings">Weddings</a></li>
-          <li><a href="services/index.html#corporate">Corporate Events</a></li>
-          <li><a href="services/index.html#social">Social Functions</a></li>
-          <li><a href="gallery/index.html">Gallery</a></li>
-          <li><a href="testimonials/index.html">Testimonials</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4 class="footer-title">Contact</h4>
-        <ul class="footer-links">
-          <li><a href="https://wa.me/919819576256?text=Hi%2C%20I%20want%20to%20plan%20an%20event%20with%20Flavor%20Fusion" target="_blank">+91 98195 76256</a></li>
-          <li><a href="https://wa.me/918104334307?text=Hi%2C%20I%20want%20to%20plan%20an%20event%20with%20Flavor%20Fusion" target="_blank">+91 81043 34307</a></li>
-          <li><a href="mailto:info@flavorfusion.in">info@flavorfusion.in</a></li>
-          <li>Lalbaug, Mumbai</li>
-          <li><a href="contact/index.html">Plan Your Celebration →</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-review">
-      <p style="color:var(--cream-300);margin-bottom:1rem;font-size:0.95rem;">We value your feedback — share your experience with us.</p>
-      <a href="https://forms.gle/jnTRRCAynYJkPYwFA" target="_blank" class="review-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Leave a Review</a>
-      <div style="margin-top:1.5rem;">
-        <h4 style="color:var(--cream-300);font-size:0.9rem;margin-bottom:0.5rem;font-weight:400;">Scan &amp; Share Your Experience</h4>
-        <p style="color:var(--cream-500);font-size:0.8rem;">Your feedback helps us grow and serve better</p>
-        <a href="https://forms.gle/jnTRRCAynYJkPYwFA" target="_blank" style="display:inline-block;margin-top:1rem;">
-          <img src="images/review-qr.svg" alt="Scan to leave a review" style="width:100px;height:100px;opacity:0.8;">
-        </a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Flavor Fusion. A Suresh Caterers Enterprise.</p>
-      <p>Crafted with discipline &amp; refinement</p>
-    </div>
-  </footer>
-  <a href="https://wa.me/919819576256?text=Hi%2C%20I%20want%20to%20plan%20an%20event%20with%20Flavor%20Fusion" class="whatsapp-float" target="_blank" aria-label="Contact on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-  <script src="main.js"></script>
 
+      <div class="f-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#approach">Our Approach</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#venues">Venues</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Events</h4>
+        <ul>
+          <li><a href="#services">Weddings</a></li>
+          <li><a href="#services">Corporate Events</a></li>
+          <li><a href="#services">Social Functions</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/919819576256">+91 98195 76256</a></li>
+          <li><a href="https://wa.me/918104334307">+91 81043 34307</a></li>
+          <li><a href="mailto:flavorfusioncatering@gmail.com">Email Us</a></li>
+          <li>Lalbaug, Mumbai</li>
+          <li><a href="#contact" style="color:var(--gold-400);">Plan Your Celebration →</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Flavor Fusion · A Suresh Caterers Enterprise</span>
+      <span>Crafted with Discipline &amp; Refinement</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/919819576256" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- TWEAKS PANEL -->
+<script>
+  // Scrolled header
+  const header = document.getElementById('header');
+  const onScroll = () => {
+    if (window.scrollY > 20) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Tweaks mode
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "gold",
+    "rhythm": "tight",
+    "marks": "hidden",
+    "hero": "center"
+  }/*EDITMODE-END*/;
+
+  let tweakState = {...TWEAK_DEFAULTS};
+
+
+  function applyTweaks(){
+    const root = document.documentElement;
+
+    // accent
+    if (tweakState.accent === 'gold'){
+      root.style.setProperty('--gold-700', '#8B6F3E');
+      root.style.setProperty('--gold-600', '#B08D4F');
+      root.style.setProperty('--gold-500', '#C4A574');
+      root.style.setProperty('--gold-400', '#D4B896');
+      root.style.setProperty('--gold-300', '#E6D4A8');
+    } else if (tweakState.accent === 'bronze'){
+      root.style.setProperty('--gold-700', '#7A4F2E');
+      root.style.setProperty('--gold-600', '#96623B');
+      root.style.setProperty('--gold-500', '#B07C52');
+      root.style.setProperty('--gold-400', '#C6956D');
+      root.style.setProperty('--gold-300', '#DAB28E');
+    } else {
+      root.style.setProperty('--gold-700', '#1F1D1A');
+      root.style.setProperty('--gold-600', '#4A4740');
+      root.style.setProperty('--gold-500', '#6A665C');
+      root.style.setProperty('--gold-400', '#8B847A');
+      root.style.setProperty('--gold-300', '#A89E8F');
+    }
+
+    // rhythm
+    const r = tweakState.rhythm;
+    root.style.setProperty('--pad-section', r === 'tight' ? '80px' : (r === 'airy' ? '160px' : '120px'));
+
+    // marks
+    document.querySelectorAll('.sec-mark').forEach(el => {
+      if (tweakState.marks === 'hidden'){ el.style.display = 'none'; }
+      else { el.style.display = ''; }
+      if (tweakState.marks === 'plain'){
+        const txt = el.textContent.replace(/No\.\s*\d+\s*·\s*/, '');
+        el.dataset.orig = el.dataset.orig || el.textContent;
+        el.textContent = txt;
+      } else if (el.dataset.orig){
+        el.textContent = el.dataset.orig;
+      }
+    });
+
+    // hero
+    const heroGrid = document.querySelector('.hero-grid');
+    const heroCopy = document.querySelector('.hero-copy');
+    const heroVisual = document.querySelector('.hero-visual');
+    if (tweakState.hero === 'center'){
+      heroGrid.style.gridTemplateColumns = '1fr';
+      heroGrid.style.textAlign = 'center';
+      heroGrid.style.maxWidth = '820px';
+      heroCopy.style.maxWidth = '720px';
+      heroCopy.style.margin = '0 auto';
+      heroVisual.style.display = 'none';
+      document.querySelector('.hero-sub').style.margin = '28px auto 0';
+      document.querySelector('.hero-trust').style.margin = '14px auto 0';
+      document.querySelector('.hero-cta').style.justifyContent = 'center';
+    } else {
+      heroGrid.style.gridTemplateColumns = '';
+      heroGrid.style.textAlign = '';
+      heroGrid.style.maxWidth = '';
+      heroCopy.style.maxWidth = '';
+      heroCopy.style.margin = '';
+      heroVisual.style.display = '';
+      document.querySelector('.hero-sub').style.margin = '';
+      document.querySelector('.hero-trust').style.margin = '';
+      document.querySelector('.hero-cta').style.justifyContent = '';
+    }
+  }
+
+  applyTweaks();
+
+</script>
 </body>
 </html>
+
+<style id="__om-edit-overrides">
+</style>
