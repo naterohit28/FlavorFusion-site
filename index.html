@@ -1274,6 +1274,7 @@
       <a href="#approach" style="text-transform: uppercase">Our Approach</a>
       <a href="#services" style="text-transform: uppercase">What We Do</a>
       <a href="#menu" style="text-transform: uppercase">Menu</a>
+      <a href="#banana-menu" style="text-transform: uppercase">Traditional Menus</a>
       <a href="#venues" style="text-transform: uppercase">Venues</a>
       <a href="#gallery" style="text-transform: uppercase">Gallery</a>
       <a href="#testimonials" style="text-transform: uppercase">Testimonials</a>
@@ -1377,7 +1378,7 @@ Executed Perfectly.</h2>
   <div class="svc-grid">
     <article class="svc-card">
       <div class="svc-img">
-        <img src="images/event-2.png" alt="Premium wedding catering dessert tower" loading="lazy">
+        <img src="images/event-2.png" alt="Chef preparing food at an event counter" loading="lazy">
       </div>
       <div class="svc-num" style="text-align: center; font-weight: 700">01 · Weddings</div>
       <h3 class="svc-title" style="text-align: center">Weddings</h3>
@@ -1400,7 +1401,7 @@ Executed Perfectly.</h2>
 
     <article class="svc-card">
       <div class="svc-img">
-        <img src="images/event-3.png" alt="Chit Chaat counter at home celebration" loading="lazy">
+        <img src="images/event-3.png" alt="Chef presenting individual appetizer glasses" loading="lazy">
       </div>
       <div class="svc-num" style="text-align: center">03 · At-home</div>
       <h3 class="svc-title" style="text-align: center">House Party Catering</h3>
@@ -1541,23 +1542,23 @@ Home Celebrations.</h2>
   <div class="banana-stage">
     <div class="banana-image-wrap">
       <div class="banana-image">
-        <img src="images/banana-leaf-1.jpg" alt="Traditional vegetarian sadhya served on a banana leaf">
-        <div class="banana-image-tag">Served on Fresh Banana Leaf</div>
+        <img src="images/banana-leaf-1.jpg" alt="An example of traditional banana-leaf meal presentation">
+        <div class="banana-image-tag">Banana-leaf serving inspiration</div>
       </div>
     </div>
 
     <div class="banana-content">
-      <div class="banana-tabs" role="tablist">
-        <button class="banana-tab active" data-menu="udupi-basic" style="font-size: 20px; font-weight: 700" type="button">UDUPI BASIC</button>
-        <button class="banana-tab" data-menu="udupi-special" style="font-size: 20px; font-weight: 700" type="button">UDUPI SPECIAL</button>
-        <button class="banana-tab" data-menu="onam" style="font-size: 20px; font-weight: 700">Onam Sadhya</button>
-        <button class="banana-tab" data-menu="tamil" style="font-size: 20px; font-weight: 700">TAMIL SPECIAL</button>
-        <button class="banana-tab" data-menu="hubli" style="font-size: 20px; font-weight: 700">Hubli / Dharwad</button>
-        <button class="banana-tab" data-menu="gsb" style="font-size: 20px; font-weight: 700">GSB</button>
-        <button class="banana-tab" data-menu="maharashtrian" style="font-size: 20px; font-weight: 700">Maharashtrian</button>
+      <div class="banana-tabs" role="tablist" aria-label="Traditional menus">
+        <button class="banana-tab active" data-menu="udupi-basic" type="button" role="tab" id="tab-udupi-basic" aria-controls="panel-udupi-basic" aria-selected="true" tabindex="0">UDUPI BASIC</button>
+        <button class="banana-tab" data-menu="udupi-special" type="button" role="tab" id="tab-udupi-special" aria-controls="panel-udupi-special" aria-selected="false" tabindex="-1">UDUPI SPECIAL</button>
+        <button class="banana-tab" data-menu="onam" type="button" role="tab" id="tab-onam" aria-controls="panel-onam" aria-selected="false" tabindex="-1">Onam Sadhya</button>
+        <button class="banana-tab" data-menu="tamil" type="button" role="tab" id="tab-tamil" aria-controls="panel-tamil" aria-selected="false" tabindex="-1">TAMIL SPECIAL</button>
+        <button class="banana-tab" data-menu="hubli" type="button" role="tab" id="tab-hubli" aria-controls="panel-hubli" aria-selected="false" tabindex="-1">Hubli / Dharwad</button>
+        <button class="banana-tab" data-menu="gsb" type="button" role="tab" id="tab-gsb" aria-controls="panel-gsb" aria-selected="false" tabindex="-1">GSB</button>
+        <button class="banana-tab" data-menu="maharashtrian" type="button" role="tab" id="tab-maharashtrian" aria-controls="panel-maharashtrian" aria-selected="false" tabindex="-1">Maharashtrian</button>
       </div>
 
-      <div class="banana-panel active" data-menu="udupi-basic">
+      <div class="banana-panel active" data-menu="udupi-basic" role="tabpanel" id="panel-udupi-basic" aria-labelledby="tab-udupi-basic" tabindex="0">
         <div class="banana-panel-head">
           <span class="banana-menu-tag" style="font-weight: 500">Menu 01 · Udupi Tradition</span>
           <h3 class="banana-menu-name">Udupi — Basic Menu</h3>
@@ -1580,7 +1581,7 @@ Home Celebrations.</h2>
         </ul>
       </div>
 
-      <div class="banana-panel" data-menu="udupi-special">
+      <div class="banana-panel" data-menu="udupi-special" role="tabpanel" id="panel-udupi-special" aria-labelledby="tab-udupi-special" tabindex="0" hidden>
         <div class="banana-panel-head">
           <span class="banana-menu-tag" style="font-weight: 600">Menu 02 · Udupi Tradition</span>
           <h3 class="banana-menu-name">Udupi — Special Menu</h3>
@@ -1605,7 +1606,7 @@ Home Celebrations.</h2>
         </ul>
       </div>
 
-      <div class="banana-panel" data-menu="onam">
+      <div class="banana-panel" data-menu="onam" role="tabpanel" id="panel-onam" aria-labelledby="tab-onam" tabindex="0" hidden>
         <div class="banana-panel-head">
           <span class="banana-menu-tag" style="font-weight: 600">Menu 03 · Kerala Tradition</span>
           <h3 class="banana-menu-name">Onam Sadhya</h3>
@@ -1632,7 +1633,7 @@ Home Celebrations.</h2>
         </ul>
       </div>
 
-      <div class="banana-panel" data-menu="tamil">
+      <div class="banana-panel" data-menu="tamil" role="tabpanel" id="panel-tamil" aria-labelledby="tab-tamil" tabindex="0" hidden>
         <div class="banana-panel-head">
           <span class="banana-menu-tag" style="font-weight: 600">Menu 04 · Tamil Tradition</span>
           <h3 class="banana-menu-name">Tamil — Special Menu</h3>
@@ -1658,7 +1659,7 @@ Home Celebrations.</h2>
         </ul>
       </div>
 
-      <div class="banana-panel" data-menu="hubli">
+      <div class="banana-panel" data-menu="hubli" role="tabpanel" id="panel-hubli" aria-labelledby="tab-hubli" tabindex="0" hidden>
         <div class="banana-panel-head">
           <span class="banana-menu-tag" style="font-weight: 600">Menu 05 · North Karnataka</span>
           <h3 class="banana-menu-name">Hubli / Dharwad Menu</h3>
@@ -1684,7 +1685,7 @@ Home Celebrations.</h2>
         </ul>
       </div>
 
-      <div class="banana-panel" data-menu="gsb">
+      <div class="banana-panel" data-menu="gsb" role="tabpanel" id="panel-gsb" aria-labelledby="tab-gsb" tabindex="0" hidden>
         <div class="banana-panel-head">
           <span class="banana-menu-tag" style="font-weight: 600">Menu 06 · Konkani Tradition</span>
           <h3 class="banana-menu-name">GSB Menu</h3>
@@ -1708,7 +1709,7 @@ Home Celebrations.</h2>
         </ul>
       </div>
 
-      <div class="banana-panel" data-menu="maharashtrian">
+      <div class="banana-panel" data-menu="maharashtrian" role="tabpanel" id="panel-maharashtrian" aria-labelledby="tab-maharashtrian" tabindex="0" hidden>
         <div class="banana-panel-head">
           <span class="banana-menu-tag" style="font-weight: 600">Menu 07 · Maharashtra</span>
           <h3 class="banana-menu-name">Maharashtrian Menu</h3>
@@ -1751,17 +1752,7 @@ Home Celebrations.</h2>
   </div>
 </section>
 
-<script>
-  (function(){
-    const tabs = document.querySelectorAll(".banana-tab");
-    const panels = document.querySelectorAll(".banana-panel");
-    tabs.forEach(t => t.addEventListener("click", () => {
-      const target = t.dataset.menu;
-      tabs.forEach(x => x.classList.toggle("active", x === t));
-      panels.forEach(p => p.classList.toggle("active", p.dataset.menu === target));
-    }));
-  })();
-</script>
+
 
 <!-- VENUES -->
 <section class="section" id="venues">
@@ -1811,85 +1802,61 @@ Home Celebrations.</h2>
 <section class="section" id="gallery">
   <div class="section-head">
     <span class="sec-mark center" style="font-weight: 700">No. 06 · Our Work</span>
-    <h2 class="sec-title">Moments From Our Events.</h2>
-    <p class="sec-lede center" style="font-weight: 500">A glimpse of the experiences we craft.</p>
+    <h2 class="sec-title">Cuisine &amp; Celebrations.</h2>
+    <p class="sec-lede center" style="font-weight: 500">Explore event moments and menu inspiration.</p>
   </div>
 
   <div class="gallery-mosaic">
-    <div class="gm-item gm-2x2">
-      <img src="images/event-1.png" alt="Vegetarian wedding buffet spread" loading="lazy">
-      <div class="g-caption">Wedding Buffet</div>
-    </div>
-    <div class="gm-item gm-2x1">
-      <img src="images/photo-1631452180519-c014fe946bc7.jpg" alt="South Indian thali" loading="lazy">
-      <div class="g-caption">Thali Service</div>
-    </div>
-    <div class="gm-item gm-2x2">
-      <img src="images/photo-1546833999-b9f581a1996d.jpg" alt="Event decoration" loading="lazy">
-      <div class="g-caption">Event Décor</div>
-    </div>
-    <div class="gm-item gm-2x1">
-      <img src="images/photo-1567337710282-00832b415979.jpg" alt="Live food counter" loading="lazy">
-      <div class="g-caption">Live Counter</div>
-    </div>
-
-    <div class="gm-item gm-2x1">
-      <img src="images/photo-1631452180519-c014fe946bc7.jpg" alt="Plated vegetarian dish" loading="lazy">
-      <div class="g-caption">Plated Service</div>
-    </div>
-    <div class="gm-item gm-2x2">
-      <img src="images/photo-1623428187969-5da2dcea5ebf.jpg" alt="Vegetarian Indian food spread" loading="lazy">
-      <div class="g-caption">Culinary Spread</div>
-    </div>
-    <div class="gm-item gm-2x1">
-      <img src="images/photo-1488477181946-6428a0291777.jpg" alt="Dessert station" loading="lazy">
-      <div class="g-caption">Dessert Station</div>
-    </div>
-    <div class="gm-item gm-2x2">
-      <img src="images/photo-1505253758473-96b7015fcd40.jpg" alt="Indian curry preparation" loading="lazy">
-      <div class="g-caption">Live Cooking</div>
-    </div>
-    <div class="gm-item gm-2x1">
-      <img src="images/photo-1606491956689-2ea866880c84.jpg" alt="Paneer preparation" loading="lazy">
-      <div class="g-caption">Chef's Special</div>
-    </div>
-
-    <div class="gm-item gm-3x2">
-      <img src="images/photo-1601050690597-df0568f70950.jpg" alt="South Indian banana leaf meal" loading="lazy">
-      <div class="g-caption">Banana Leaf Sadhya</div>
-    </div>
-    <div class="gm-item gm-3x2">
-      <img src="images/photo-1574484284002-952d92456975.jpg" alt="Decorated dining setup" loading="lazy">
-      <div class="g-caption">Table Setup</div>
-    </div>
-
-    <div class="gm-item gm-2x1">
-      <img src="images/banana-leaf-3.jpg" alt="Live chaat counter" loading="lazy">
-      <div class="g-caption">Chaat Counter</div>
-    </div>
-    <div class="gm-item gm-2x1">
-      <img src="images/banana-leaf-2.webp" alt="Mixed thali presentation" loading="lazy">
-      <div class="g-caption">Curated Plate</div>
-    </div>
-    <div class="gm-item gm-2x1">
-      <img src="images/event-5.png" alt="Master chef at live counter" loading="lazy">
-      <div class="g-caption">Master Chef</div>
-    </div>
-    <div class="gm-item gm-2x1">
-      <img src="images/event-6.png" alt="Vegetarian spring roll appetizers" loading="lazy">
-      <div class="g-caption">Welcome Appetizers</div>
-    </div>
-    <div class="gm-item gm-2x1">
-      <img src="images/photo-1544025162-d76694265947.jpg" alt="Catered event setup" loading="lazy">
-      <div class="g-caption">Corporate Event</div>
-    </div>
+    <figure class="gm-item gm-2x2">
+      <img src="images/event-6.png" alt="Dessert tower and a chef arranging the reception buffet" loading="lazy">
+      <figcaption class="g-caption">Reception dessert display</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x1">
+      <img src="images/event-4.png" alt="Chef cooking at a live station" loading="lazy">
+      <figcaption class="g-caption">Live cooking station</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x1">
+      <img src="images/event-3.png" alt="Chef presenting individual appetizer glasses" loading="lazy">
+      <figcaption class="g-caption">Welcome appetizers</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x2">
+      <img src="images/event-5.png" alt="Decorated Chit Chaat food counter" loading="lazy">
+      <figcaption class="g-caption">Chaat counter</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x1">
+      <img src="images/banana-leaf-1.jpg" alt="Rice, papad and accompaniments served on a banana leaf" loading="lazy">
+      <figcaption class="g-caption">Traditional banana-leaf meal</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x1">
+      <img src="images/banana-leaf-3.jpg" alt="A banana-leaf meal with breads, rice and accompaniments" loading="lazy">
+      <figcaption class="g-caption">Traditional meal presentation</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x2">
+      <img src="images/photo-1631452180519-c014fe946bc7.jpg" alt="Paneer curry garnished with herbs" loading="lazy">
+      <figcaption class="g-caption">Paneer curry</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x1">
+      <img src="images/photo-1567337710282-00832b415979.jpg" alt="Rice, papad and curry served on a steel thali" loading="lazy">
+      <figcaption class="g-caption">Thali service</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x1">
+      <img src="images/photo-1488477181946-6428a0291777.jpg" alt="Individual desserts topped with berries" loading="lazy">
+      <figcaption class="g-caption">Berry desserts</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x2">
+      <img src="images/photo-1606491956689-2ea866880c84.jpg" alt="Pav buns served with bhaji and accompaniments" loading="lazy">
+      <figcaption class="g-caption">Pav bhaji</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x1">
+      <img src="images/photo-1601050690597-df0568f70950.jpg" alt="Golden samosas served with chutneys" loading="lazy">
+      <figcaption class="g-caption">Samosas and chutneys</figcaption>
+    </figure>
+    <figure class="gm-item gm-2x1">
+      <img src="images/event-2.png" alt="Chef preparing food at an event counter" loading="lazy">
+      <figcaption class="g-caption">Chef at work</figcaption>
+    </figure>
   </div>
-  <div class="gallery-cta">
-    <a href="#gallery" class="btn btn-outline">
-      View Full Gallery
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-    </a>
-  </div>
+  <div class="gallery-cta"><a href="#contact" class="btn btn-outline">Plan your celebration</a></div>
 </section>
 
 <!-- TESTIMONIALS -->
