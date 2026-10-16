@@ -23,3 +23,34 @@ if (toggle && nav) {
   document.addEventListener('click', event => { if (!event.target.closest('.header')) setOpen(false); });
   window.matchMedia('(max-width: 1100px)').addEventListener('change', () => setOpen(false));
 }
+
+// Traditional menus: linked tabs and panels, with keyboard support.
+const menuTabs = [...document.querySelectorAll('.banana-tab')];
+const menuPanels = [...document.querySelectorAll('.banana-panel')];
+function selectTraditionalMenu(tab) {
+  menuTabs.forEach(item => {
+    const selected = item === tab;
+    item.classList.toggle('active', selected);
+    item.setAttribute('aria-selected', String(selected));
+    item.tabIndex = selected ? 0 : -1;
+  });
+  menuPanels.forEach(panel => {
+    const selected = panel.dataset.menu === tab.dataset.menu;
+    panel.classList.toggle('active', selected);
+    panel.hidden = !selected;
+  });
+}
+menuTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectTraditionalMenu(tab));
+  tab.addEventListener('keydown', event => {
+    let next;
+    if (event.key === 'ArrowRight') next = (index + 1) % menuTabs.length;
+    if (event.key === 'ArrowLeft') next = (index - 1 + menuTabs.length) % menuTabs.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = menuTabs.length - 1;
+    if (next === undefined) return;
+    event.preventDefault();
+    selectTraditionalMenu(menuTabs[next]);
+    menuTabs[next].focus();
+  });
+});
